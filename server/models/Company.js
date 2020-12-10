@@ -5,10 +5,11 @@ const CompanySchema = mongoose.Schema({
         type: String,
         required: true
     },
-    location: String,
-    establishedDate: String,
     description: String,
-    phoneNumber: String
+    establishedDate: Date,
+    email: String,
+    phone: String,
+    address: String
 });
 
 module.exports = mongoose.model('Company', CompanySchema);

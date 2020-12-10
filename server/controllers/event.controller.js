@@ -1,11 +1,11 @@
 const Event = require('../models/Event');
-const controller = require('../controllers/event.controller');
 
 // Get all the events 
 
 const get = async (req, res, next) => {
     try {
         const events = await Event.find();
+        console.log(events);
         res.json(events);
     } catch (err) {
         res.json({
@@ -21,10 +21,14 @@ const create = async (req, res, next) => {
         name: req.body.name,
         type: req.body.type,
         description: req.body.description,
-        date: req.body.date,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
         sponsorId: req.body.sponsorId,
         categoryId: req.body.categoryId,
-        imageCollectionId: req.body.imageCollectionId
+        imageUrl: req.body.imageUrl,
+        location: req.body.location,
+        address: req.body.address
+
     });
 
     try {
@@ -42,7 +46,7 @@ const create = async (req, res, next) => {
 const getEvent = async (req, res, next) => {
     try {
         const event = await Event.findById(req.params.eventId);
-        if(event)
+        if (event)
             res.send(event);
     } catch (err) {
         res.send({

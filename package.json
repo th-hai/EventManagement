@@ -4,9 +4,13 @@
   "description": "A website help you to manage all the events",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "build": "npm run build:clean && cross-env NODE_ENV=production webpack --progress --colors",
+    "build:clean": "rimraf ./dist",
+    "start": "cross-env NODE_ENV=development nodemon server",
+    "start:production": "cross-env NODE_ENV=production node server",
+    "production": "npm run build",
+    "postinstall": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,11 +23,15 @@
   },
   "homepage": "https://github.com/thanhhai1999/EventManagement#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.15"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
