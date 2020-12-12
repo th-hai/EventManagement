@@ -14,6 +14,8 @@ import SearchBar from "./components/Event/SearchBar";
 import EventPage from "./components/Event/EventPage";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 function App() {
   // const navbarRef = useRef();
   // const footerRef = useRef();
@@ -25,6 +27,12 @@ function App() {
       <Navbar class="sticky" />
       <Router>
         <Switch>
+        <Route exact path="/contact">
+<Contact/>
+        </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>

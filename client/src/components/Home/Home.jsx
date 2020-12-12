@@ -9,7 +9,7 @@ import Ticket from './Ticket';
 
 function Home() {
     return (
-        <div class="bg-gradient-to-br from-blue-300 via-blue-200 to-blue-100">
+        <div class="bg-gray-100">
            
             <div className="flex flex-col justify-center items-center">
                 <ContainerLarge />
