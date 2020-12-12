@@ -1,18 +1,19 @@
 import React from "react";
-import Calendar from "./DateTime";
+
 
 const Register = () => {
   return (
-    <div>
+    <div className="border-2 border-gray-100 h-screen flex justify-center items-center">
       <div class="container mx-auto">
         <div class="flex justify-center px-6 my-12">
           <div class="w-full xl:w-3/4 lg:w-11/12 flex">
             <div
               class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
             //   style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"
+            style={{ backgroundImage: `url(https://images.unsplash.com/photo-1519143591004-06edbd3b3c0e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80)` }}
             ></div>
 
-            <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+            <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border-2">
               <h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
               <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                 <div class="mb-4 md:flex md:justify-between">
@@ -107,7 +108,7 @@ const Register = () => {
                       
                     />
                   </div>
-                  <Calendar/>
+                  
                   <div class="md:ml-2">
                     <label
                       class="block mb-2 text-sm font-bold text-gray-700"

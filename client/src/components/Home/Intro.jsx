@@ -3,72 +3,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Intro = () => {
   return (
-    <div className="flex justify-center items-center mt-24 flex-col ">
-      <div className="flex flex-row justify-center">
-        <div>
+    <div class="flex items-center justify-center  p-5 bg-gray-100 w-full h-3/5">
+      <div class="relative flex flex-col items-center w-full max-w-6xl px-4 py-8 mx-auto text-center rounded-lg shadow-2xl lg:text-left lg:block bg-gradient-to-br from-purple-600 via-indigo-500 to-teal-400 sm:px-6 md:pb-0 md:pt-12 lg:px-12 lg:py-12">
+        <h2 class="my-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:my-0 xl:text-4xl sm:leading-tight">
+          Infastructure that is{" "}
+          <span class="block text-indigo-200 xl:inline">out of this world</span>
+        </h2>
+        <p class="mt-1 mb-10 text-sm font-medium text-indigo-200 uppercase xl:text-base xl:tracking-wider lg:mb-0">
+          Pushing the envelope for being awesome!
+        </p>
+        <div class="flex mb-8 lg:mt-6 lg:mb-0">
+          <div class="inline-flex">
+            <a
+              href="#"
+              class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-indigo-700 transition duration-150 ease-in-out bg-indigo-100 border border-transparent rounded-md hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline focus:border-indigo-300"
+            >
+              Sign Up Today
+            </a>
+          </div>
+        </div>
+        <div class="bottom-0 right-0 mb-0 mr-3 lg:absolute lg:-mb-12">
           <img
-            src="https://picsum.photos/id/237/200/300"
-            className="w-24 h-24 rounded"
-          ></img>
-        </div>
-        <div className="ml-16 break-normal w-3/5 text-xl font-medium">
-          WiTalk is an invitation only event with a carefully curated audience.
-          You are more than welcome to submit your application.
-        </div>
-      </div>
-      <div className="flex w-3/5  justify-around mt-24">
-        <div className="flex flex-col w-1/4 mt-6">
-          <div className="ml-2">
-            <img
-              src="https://picsum.photos/seed/picsum/200/300"
-              className="w-16 h-16 rounded-2xl"
-            ></img>
-          </div>
-          <div className="flex flex-row mt-4">
-            <div className="mr-8 text-2xl">1</div>
-            <div className="font-semibold text-2xl">Inspiration</div>
-          </div>
-          <div className="break-normal">
-            Hear from business and technical thought leaders about what’s
-            possible with us, and how the latest data analytic technologies and
-            strategies will advance your organization and your career.
-          </div>
-        </div>
-
-        <div className="flex flex-col w-1/4 mt-6">
-          <div className="ml-2">
-            <img
-              src="https://picsum.photos/seed/picsum/200/300"
-              className="w-16 h-16 rounded-2xl"
-            ></img>
-          </div>
-          <div className="flex flex-row mt-4">
-            <div className="mr-8 text-2xl">1</div>
-            <div className="font-semibold text-2xl">Inspiration</div>
-          </div>
-          <div className="break-normal">
-            Hear from business and technical thought leaders about what’s
-            possible with us, and how the latest data analytic technologies and
-            strategies will advance your organization and your career.
-          </div>
-        </div>
-
-        <div className="flex flex-col w-1/4 mt-6">
-          <div className="ml-2">
-            <img
-              src="https://picsum.photos/seed/picsum/200/300"
-              className="w-16 h-16 rounded-2xl"
-            ></img>
-          </div>
-          <div className="flex flex-row mt-4">
-            <div className="mr-8 text-2xl">1</div>
-            <div className="font-semibold text-2xl">Inspiration</div>
-          </div>
-          <div className="break-normal">
-            Hear from business and technical thought leaders about what’s
-            possible with us, and how the latest data analytic technologies and
-            strategies will advance your organization and your career.
-          </div>
+            src="https://cdn.devdojo.com/images/september2020/cta-1.png"
+            class="max-w-xs mb-4 opacity-75 md:max-w-2xl lg:max-w-lg xl:mb-0 xl:max-w-md"
+          />
         </div>
       </div>
     </div>

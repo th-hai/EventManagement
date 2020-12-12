@@ -1,89 +1,74 @@
 import React from "react";
 const Login = () => {
   return (
-      
-    <div className="flex justify-center">
-        <form class=" w-3/5 bg-white shadow-xl flex flex-wrap justify-center mt-56 mb-28">
-          <div class="w-full md:w-1/3 bg-blue-600 p-6 text-white">
-            <p class="mb-8 text-3xl flex items-center">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 512 512"
-                class="inline-block fill-current h-8 w-8 mr-2"
-              >
-                <path d="m64 496l0-256 48 0 0-80c0-71 57-128 128-128l16 0c71 0 128 57 128 128l0 80 48 0 0 256z m172-131l-12 83 48 0-12-83c12-5 20-17 20-30 0-18-14-32-32-32-18 0-32 14-32 32 0 13 8 25 20 30z m100-197c0-49-39-88-88-88-49 0-88 39-88 88l0 72 176 0z" />
-              </svg>
-              Login Now
-            </p>
-            <div class="mb-4">
-              <input
-                class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="email"
-                placeholder="Email"
-              />
-            </div>
-            <div class="mb-6">
-              <input
-                class="appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-            <button
-              class="block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Login
-            </button>
-    
-            <label class="block text-sm mb-4">
-              <input type="checkbox" /> Remember me
-            </label>
-    
-            <a
-              class="block w-full text-sm text-right text-white hover:text-gray-300"
-              href="#"
-            >
-              Forgot Password?
-            </a>
+    <div class=" z-10 bg-white">
+  <div class="flex items-center justify-center min-h-screen text-center">
+
+    <div
+      class="inline-block px-2 py-6 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl lg:w-2xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full"
+      role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="pb-2 bg-white">
+        <div class="flex-col items-center sm:flex">
+          <div class="mt-3 mb-1 text-center sm:text-left">
+            <h4 class="pt-1 text-3xl font-black leading-6 text-gray-700" id="modal-headline">
+              Sign in
+            </h4>
           </div>
-          <div class="w-full md:w-2/3 p-6 flex flex-col justify-between">
-            <p class="text-gray-700 mb-8">
-              Login to access your files, communicate with colleagues and view
-              project content.
-            </p>
-            <a
-              class="block w-full mb-8 text-sm text-center text-blue-600 hover:text-blue-700"
-              href="#"
-            >
-              Don't have an account? Register Now!
-            </a>
-    
-            <p class="mb-4 text-center">OR</p>
-            <hr class="block w-full mb-4 border-0 border-t border-gray-300" />
-    
-            <div class="flex flex-wrap justify-center">
-              <div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
-                <button
-                  class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Login with Facebook
-                </button>
-              </div>
-              <div class="w-full sm:w-1/2 sm:pl-2">
-                <button
-                  class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Login with Google
-                </button>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="w-full font-sans text-sm text-center text-gray-600">
+        Sign in on the internal platform
+      </div>
+      <div class="px-4 py-2 pt-1 pt-3 mt-1 text-xs bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button
+          class="justify-center w-full px-3 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none">
+          Login with facebook
+        </button>
+      </div>
+      <div class="px-4 py-2 pt-1 pt-3 mt-1 text-xs bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button
+          class="justify-center w-full px-3 py-2 font-bold text-white bg-red-500 rounded-md hover:bg-red-700 focus:outline-none">
+          Login with google
+        </button>
+      </div>
+      <div class="w-full pt-2 text-sm text-center text-gray-600">
+        or login with email address
+      </div>
+      <div class="px-4 text-xs bg-gray-50 sm:px-6 sm:flex-row-reverse">
+        <form class="mt-4">
+          <label for="email" class="block">
+            <span class="font-sans text-sm text-gray-700">
+              Email Address
+            </span>
+            <input type="email" id="email" name="email" autocomplete="username"
+              class="block w-full px-3 py-2 mt-1 text-gray-700 border rounded-md form-input focus:border-indigo-600"
+              required />
+          </label>
+          <label for="password" class="block mt-3">
+            <span class="font-sans text-sm text-gray-700">
+              Password
+            </span>
+            <input type="password" id="password" name="password" autocomplete="current-password"
+              class="block w-full px-3 py-2 mt-1 text-gray-700 border rounded-md form-input focus:border-indigo-600"
+              required />
+          </label>
+          <div class="justify-start w-full px-4 mt-2 font-sans text-xs leading-6 text-center text-gray-500">
+            <a class="block text-sm text-indigo-700 fontme hover:underline" href="#">Forgot password</a>
+          </div>
+          <div class="mt-6">
+            <button type="submit"
+              class="w-full px-4 py-2 text-sm text-center text-white bg-blue-500 rounded-md hover:bg-indigo-500">Sign in
+              now</button>
           </div>
         </form>
+      </div>
+      <div class="justify-start w-full px-4 mt-2 font-sans text-xs leading-6 text-center text-gray-500">
+        Don't have an account?
+        <a class="block text-sm text-indigo-700 fontme hover:underline" href="#">Sign up</a>
+      </div>
     </div>
+  </div>
+</div>
   );
 };
 export default Login;
