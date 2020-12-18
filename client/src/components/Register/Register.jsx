@@ -16,8 +16,8 @@ const Register = () => {
             ></div>
 
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border">
-              <h1 class="pt-4 text-5xl text-center">Create an account!</h1>
-              <form class="w-full max-w-sm m-auto text-gray-600 background-white px-12 py-8">
+              <h1 class="pt-4 text-5xl text-center">Create an account</h1>
+              <form class="w-full max-w-sm m-auto text-gray-600 background-white  py-8">
                 <FloatingLabelInput name="fullname" type="text">
                   Full Name
                 </FloatingLabelInput>
@@ -36,15 +36,15 @@ const Register = () => {
                 <div class="control-group">
                   <label
                     for="dob-day"
-                    class="control-label font-sans text-gray-700 font-bold text-base mb-4 block"
+                    class="control-label font-sans text-gray-700 font-bold text-2xl mb-4 block"
                   >
                     Date of birth
                   </label>
-                  <div class="controls mb-4 flex justify-between ">
+                  <div class="controls mb-4 flex justify-between">
                     <select
                       name="dob-day"
                       id="dob-day"
-                      class="  font-sans  text-gray-700 border border-black border-opacity-25 w-16 focus:outline-none rounded h-8 pl-1"
+                      class="  font-sans  text-gray-700 border border-black border-opacity-25 w-16 h-10 focus:outline-none rounded h-8 pl-1 text-xl flex-grow"
                     >
                       <option value="">Day</option>
                       <option value="">---</option>
@@ -83,7 +83,7 @@ const Register = () => {
                     <select
                       name="dob-month"
                       id="dob-month"
-                      class="font-sans text-gray-700 border border-black border-opacity-25 w-28 focus:outline-none rounded pl-1"
+                      class="font-sans text-gray-700 border border-black border-opacity-25 w-28 h-10 focus:outline-none rounded pl-1 text-xl flex-grow mx-4"
                     >
                       <option value="">Month</option>
                       <option value="">-----</option>
@@ -103,7 +103,7 @@ const Register = () => {
                     <select
                       name="dob-year"
                       id="dob-year"
-                      class="font-sans  text-gray-700 border border-black border-opacity-25 w-24 focus:outline-none rounded pl-1"
+                      class="font-sans  text-gray-700 border border-black border-opacity-25 w-24 h-10 focus:outline-none rounded pl-1 text-xl flex-grow"
                     >
                       <option value="">Year</option>
                       <option value="">----</option>
@@ -225,7 +225,7 @@ const Register = () => {
 
                 <div class="mb-6 text-center">
                   <button
-                    class=" mt-4 w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    class=" mt-4 w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                     type="button"
                   >
                     Register Account
@@ -234,7 +234,7 @@ const Register = () => {
                 <hr class="mb-6 border-t" />
                 <div class="text-center">
                   <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    class="inline-block text-lg text-blue-500 align-baseline hover:text-blue-800 mb-2"
                     href="#"
                   >
                     Forgot Password?
@@ -242,7 +242,7 @@ const Register = () => {
                 </div>
                 <div class="text-center">
                   <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    class="inline-block text-lg text-blue-500 align-baseline hover:text-blue-800"
                     href="./index.html"
                   >
                     Already have an account? Login!
