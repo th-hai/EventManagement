@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <header class="w-full text-gray-700 bg-white  border-gray-100 shadow-sm body-font top-0 z-40 fixed sticky">
             <div class="container flex flex-col items-start justify-between p-6 mx-auto md:flex-row">
-                <a class="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
+                <a href="/" class="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
                     <svg class="w-auto h-5 text-gray-900 fill-current" viewBox="0 0 202 69"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
