@@ -96,7 +96,7 @@ const create = (req, res) => {
         res.status(200).json({
           success: true,
           message: `Ticket has been deleted successfully!`,
-          ticket: ticket
+          ticket: data
         });
       });
     };

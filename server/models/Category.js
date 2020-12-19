@@ -3,7 +3,7 @@ const CategorySchema = mongoose.Schema({
     name: {
         type: String,
         max: 50,
-        min: 10,
+        min: 2,
         required: true
     },
     description: String

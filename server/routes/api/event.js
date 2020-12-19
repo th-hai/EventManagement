@@ -7,7 +7,7 @@ router.get('/', eventController.get);
 
 // Add an events
 
-router.post('/', eventController.create);
+router.post('/create', eventController.create);
 
 // Get a specific event
 

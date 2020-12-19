@@ -22,7 +22,7 @@ const create = async (req, res, next) => {
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         avatarUrl: req.body.avatarUrl,
-        socialNetwork: req.body.socialNetwork,
+        socialNetwork: req.body.socialNetwork
     });
 
     try {

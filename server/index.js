@@ -19,6 +19,7 @@ const authRouter = require('../server/routes/api/auth');
 const sponsorRouter = require('../server/routes/api/sponsor');
 const categoryRouter = require('../server/routes/api/category');
 const speakerRouter = require('../server/routes/api/speaker');
+const ticketRouter = require('../server/routes/api/ticket');
 
 // ROUTES
 
@@ -27,6 +28,7 @@ app.use('/api/user', authRouter);
 app.use('/sponsors', sponsorRouter);
 app.use('/category', categoryRouter);
 app.use('/speakers', speakerRouter);
+app.use('/tickets', ticketRouter);
 
 app.get('/', (req, res) => {
     res.send('We are on home');

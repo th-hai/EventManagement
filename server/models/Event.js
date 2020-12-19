@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const {
+    Schema
+} = mongoose;
 const EventSchema = mongoose.Schema({
     name: {
         type: String,
@@ -21,34 +23,25 @@ const EventSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    sponsorId: [
-        {   
-            sponsorId: {
-                type: Schema.Types.ObjectId,
-                required: true,
-                ref: 'sponsors'
-            },
-            logoUrl: {
-                type: String,
-                default: "http://placekitten.com/200/200"
-            },
-            amount: {
-                type: Number,
-                required: true
-            }
-            
+    sponsors: [{
+        sponsorId: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: 'Sponsors'
+        },
+        amount: {
+            type: Number,
+            required: true
         }
-    ],
-    categoryId: [
-        {
-            categoryId: {
-                type: Schema.Types.ObjectId,
-                ref: 'eventcategory'
-            },
-            categoryName: String
-        }
-    ],
-    imageUrl: Array,
+    }],
+    category: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    }],
+    imageUrl: {
+        type: Array,
+        default: ['https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30']
+    },
     location: {
         type: String,
         required: true
@@ -57,38 +50,19 @@ const EventSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    speaker: [
-        {
-            speakerId: {
-                type: Schema.Types.ObjectId,
-                required: true,
-                ref: 'speakers'
-            },
-            speakerName: String,
-            avatarUrl: String,
-        }
-    ],
-    tickets: [
-        {
-            ticketId: {
-                type: Schema.Types.ObjectId,
-                required: true,
-                ref: 'tickets'
-            },
-            ticketType: String,
-            price: {
-                type: Number,
-                required: true
-            },
-            quantity: {
-                type: Number,
-                required: true
-            }
-        }
-    ],
+    speakers: [{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Speakers'
+    }],
+    tickets: [{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Tickets'
+    }],
     dressCode: String,
     plannedCost: Number,
     actualCost: Number,
-}, { collection: 'Events'});
+});
 
 module.exports = mongoose.model('Events', EventSchema);
