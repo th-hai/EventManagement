@@ -10,7 +10,8 @@
     "start:production": "cross-env NODE_ENV=production node server",
     "production": "npm run build",
     "postinstall": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,15 +24,22 @@
   },
   "homepage": "https://github.com/thanhhai1999/EventManagement#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.23.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "googleapis": "^66.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
-    "passport": "^0.4.1"
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.4.17",
+    "passport": "^0.4.1",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

@@ -3,26 +3,16 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     email: {
         type: String,
-        trim: true,
-        lowercase: true,
         unique: true,
-        validate: {
-            validator: function (v) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-            },
-            message: "Please enter a valid email"
-        },
         required: [true, "Email required"]
     },
     password: {
         type: String,
-        required: true
+        required: [true, 'Please enter your password!'],
     },
-    firstName: {
-        type: String
-    },
-    lastName: {
-        type: String
+    name: {
+        type: String,
+        required: [true, 'Please enter your name']
     },
     address: {
         type: String,
@@ -34,14 +24,12 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     },
     phone: {
-        type: String,
-        max: 12,
-        min: 9
+        type: String
     },
     role: {
-        type: String,
-        default: 'MEMBER',
-        enum: ['MEMBER', 'ADMIN']
+        type: Number,
+        default: 0,
+        enum: [1, 0]
     },
     resetPasswordToken: {
         type: String
@@ -49,14 +37,10 @@ const UserSchema = new mongoose.Schema({
     resetPasswordExpires: {
         type: Date
     },
-    updated: Date,
-    avatarUrl: String,
-    createdAt: {
+    avatarUrl: {
         type: String,
-        default: Date.now
+        default: 'http://placekitten.com/300/300'
     }
-}, {
-    collection: 'Users'
-});
+}, { timestamps : true});
 
 module.exports = mongoose.model('User', UserSchema);

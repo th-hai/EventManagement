@@ -12,7 +12,6 @@ const get = async (req, res, next) => {
         })
     }
 }
-
 // Add a speaker
 
 const create = async (req, res, next) => {
