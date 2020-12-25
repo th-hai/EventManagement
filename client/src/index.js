@@ -4,13 +4,14 @@ import './assets/main.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import DataProvider from './redux/store'
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <DataProvider>
       <App/>
     </DataProvider>
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
