@@ -6,11 +6,10 @@ import {
   faGithub,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-
 // library.add(faFacebookSquare, faGithub, faInstagram);
 const Footer = () => {
   return (
-    <div class=" flex items-end w-full h-full bg-white  border-t-1  bottom-0 z-40">
+    <div class=" flex items-end w-full h-full  bg-white  border-t-1  bottom-0 z-10">
       <footer class="w-full text-gray-700 bg-white body-font">
         <div class="bg-white container flex flex-col flex-wrap px-5 py-10 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
           <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">

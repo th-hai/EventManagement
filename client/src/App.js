@@ -6,7 +6,9 @@ import {
   Route,
   Redirect,
   Link,
+  useRoutes,
 } from "react-router-dom";
+
 import PageNotFound from "./components/404/404";
 import Navbar from "./components/Home/Navbar";
 import Footer from "./components/Home/Footer";
@@ -16,45 +18,33 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+
+import CustomerListView from "./views/customer/CustomerListView";
+import { ThemeProvider } from "@material-ui/core";
+import GlobalStyles from "../src/components/GlobalStyles";
+import "../src/mixins/chartjs";
+import theme from "../src/theme";
+import routes from "../src/routes";
+import DashboardLayout from "./components/AdminLayout";
 function App() {
+  const routing = useRoutes(routes);
+  // const [contentHeight, setContentHeight] = React.useState(
+  //   window.innerHeight - 200
+  // );
   // const navbarRef = useRef();
   // const footerRef = useRef();
   // const Content = () => {
   //   window.innerHeight - navbarRef.current.of
   // }
   return (
-    <div>
-      <Navbar class="sticky" />
-      <Router>
-        <Switch>
-        <Route exact path="/contact">
-<Contact/>
-        </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/register" >
-            <Register />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/home">
-            <Redirect to="/" />
-          </Route>
-          <Route exact path="/event">
-            <EventPage />
-          </Route>
-          <Route path="*">
-            <PageNotFound />
-          </Route>
-        </Switch>
-      </Router>
-      <Footer />
-    </div>
+  
+
+      <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {routing}
+
+    </ThemeProvider>
+
   );
 }
 

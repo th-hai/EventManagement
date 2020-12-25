@@ -1,7 +1,7 @@
 import React from "react";
-const Contact = () => {
+const Contact = (props) => {
   return (
-    <section class="blog text-gray-700 body-font h-screen">
+    <section class="blog text-gray-700 body-font h-full" style={{minHeight: props.minHeight}}>
       <div class="container px-5 py-24 mx-auto h-full ">
         <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
           <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">

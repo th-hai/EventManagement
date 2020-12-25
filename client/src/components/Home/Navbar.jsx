@@ -6,8 +6,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import ReactDOM from 'react-dom'
 const Navbar = () => {
     return (
-        <header class="w-full text-gray-700 bg-white  border-gray-100 shadow-sm body-font top-0 z-40 fixed sticky">
-            <div class="container flex flex-col items-start justify-between p-6 mx-auto md:flex-row">
+        <header class="w-full text-gray-700 bg-white  border-gray-100 shadow-sm body-font top-0 z-40 fixed sticky ">
+            <div class="container flex flex-col items-start justify-between p-6 mx-auto md:flex-row ">
                 <a href="/" class="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
                     <svg class="w-auto h-5 text-gray-900 fill-current" viewBox="0 0 202 69"
                         xmlns="http://www.w3.org/2000/svg">
@@ -21,9 +21,9 @@ const Navbar = () => {
                     <a href="#_" class="mr-5 font-medium hover:text-gray-900">Speakers</a>
                     <a href="#_" class="mr-5 font-medium hover:text-gray-900">Sponsors</a>
                     <a href="/about" class="mr-5 font-medium hover:text-gray-900">About</a>
-                    <a href="/contact" class="font-medium hover:text-gray-900">Contact</a>
+                    <a href="/contact" class="font-medium hover:text-gray-900">Contact</a>             
                 </nav>
-                <div class="items-center h-full">
+                <div class="items-center ">
                     <a class="font-medium hover:text-gray-900 mr-5">Hi, Minh Quang!</a>
                     <a className="fa-layer fa-fw"><FontAwesomeIcon size="lg" icon={faShoppingCart}  /><span className="py-0 px-4 align-top -ml-3 text-sm font-bold">5</span></a>
                    

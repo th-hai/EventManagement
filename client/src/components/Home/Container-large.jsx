@@ -2,8 +2,8 @@ import React from 'react';
 
 const ContainerLarge = () => {
     return (
-        <div class="flex items-center min-h-screen px-8 mx-auto bg-white min-w-screen">
-    <div class="w-1/2">
+        <div class="flex my-20 h-full px-8 mx-auto  ">
+    <div class="w-1/2 h-full">
         <div class="flex flex-col overflow-hidden rounded-lg shadow-2xl">
             <div class="flex items-center h-8 text-white bg-gray-900">
                 <div class="w-3 h-3 ml-3 bg-red-400 rounded-full"></div>
