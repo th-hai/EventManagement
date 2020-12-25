@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import FloatingLabelInput from "../Register/FloatingLabelInput";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {showErrMsg, showSuccessMsg} from '../Utils/Notification';
+import {showErrMsg, showSuccessMsg} from '../../../src/components/utils/Notification';
 import {
   faFacebookSquare,
   faGoogle,
@@ -21,7 +21,7 @@ const initialState = {
 const Login = () => {
   const [user, setUser] = useState(initialState)
     const dispatch = useDispatch()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const {email, password, err, success} = user
 
@@ -41,7 +41,7 @@ const Login = () => {
             localStorage.setItem('firstLogin', true)
 
             dispatch(dispatchLogin())
-            history.push("/")
+            navigate("/")
 
         } catch (err) {
             err.response.data.msg && 

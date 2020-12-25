@@ -13,25 +13,29 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
-import { Home } from "react-feather";
 import EventPage from "./components/Event/EventPage";
 import Page from "./components/Page";
 import PageNotFound from "./components/404/404";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import MainLayout from "./components/MainLayout";
 const routes = [
   {
     path: 'admin',
     element: <AdminLayout />,
     children: [
       
-      { path: 'customers', element: <EventPage/> },
+      { path: 'customers', element: <CustomerListView/> },
       { path: '*', element: <PageNotFound/> }
     ]
   },
   {
     path: '/',
-    element: <Home/>,
+    element: <MainLayout/>,
     children: [
-      { path: 'home', element: <Home/>}
+      { path: 'home', element: <Home/>},
+      { path: 'login', element: <Login/>},
+      { path: 'event', element: <EventPage/>}
     ]
   }
   // {
