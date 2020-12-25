@@ -1,11 +1,54 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+import { useHistory } from 'react-router-dom'
 import FloatingLabelInput from "../Register/FloatingLabelInput";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {showErrMsg, showSuccessMsg} from '../Utils/Notification';
 import {
   faFacebookSquare,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
+import { dispatchLogin } from '../../redux/actions/authAction'
+import { useDispatch } from 'react-redux'
+
+const initialState = {
+  email: '',
+  password: '',
+  err: '',
+  success: ''
+}
+
 const Login = () => {
+  const [user, setUser] = useState(initialState)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const {email, password, err, success} = user
+
+    const handleChangeInput = e => {
+        const {name, value} = e.target
+        setUser({...user, [name]:value, err: '', success: ''})
+    }
+
+
+    const handleSubmit = async e => {
+        e.preventDefault()
+        try {
+            const res = await axios.post('/user/login', {email, password})
+            setUser({...user, err: '', success: res.data.msg})
+            console.log(res);
+            console.log(email, password);
+            localStorage.setItem('firstLogin', true)
+
+            dispatch(dispatchLogin())
+            history.push("/")
+
+        } catch (err) {
+            err.response.data.msg && 
+            setUser({...user, err: err.response.data.msg, success: ''})
+        }
+    }
+
   return (
     <div class=" z-10 bg-white ">
   <div class="flex items-center justify-center min-h-screen text-center">
@@ -22,7 +65,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-      
+            {err && showErrMsg(err)}
+            {success && showSuccessMsg(success)}
       <div class="px-4 py-2 pt-1 pt-3 mt-1 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
       
         <button
@@ -40,12 +84,12 @@ const Login = () => {
         or login with email address
       </div>
       <div class="px-4 text-xs  sm:px-6 sm:flex-row-reverse">
-        <form class="mt-4">
-          {/* <label for="email" class="block">
+        <form onSubmit={handleSubmit} class="mt-4">
+          <label for="email" class="block">
             <span class="font-sans text-sm text-gray-700">
               Email Address
             </span>
-            <input type="email" id="email" name="email" autocomplete="username"
+            <input type="email" id="email" name="email" onChange={handleChangeInput} autocomplete="username"
               class="block w-full px-3 py-2 mt-1 text-gray-700 border rounded-md form-input focus:border-indigo-600"
               required />
           </label>
@@ -53,14 +97,13 @@ const Login = () => {
             <span class="font-sans text-sm text-gray-700">
               Password
             </span>
-            <input type="password" id="password" name="password" autocomplete="current-password"
+            <input type="password" id="password" name="password" onChange={handleChangeInput} autocomplete="current-password"
               class="block w-full px-3 py-2 mt-1 text-gray-700 border rounded-md form-input focus:border-indigo-600"
               required />
-          </label> */}
-          <FloatingLabelInput name="email" type="email">Email</FloatingLabelInput>
-          <FloatingLabelInput name="password" type="password">Password</FloatingLabelInput>
+          </label>
+    
           <div class="justify-start w-full px-4 mt-6 font-sans text-xs leading-6 text-center text-gray-500">
-            <a class="block text-lg text-indigo-700 fontme hover:underline" href="#">Forgot password</a>
+            <a class="block text-lg text-indigo-700 fontme hover:underline" href="/forgot_password">Forgot password</a>
           </div>
           <div class="mt-6">
             <button type="submit"

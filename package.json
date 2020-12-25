@@ -4,14 +4,9 @@
   "description": "A website help you to manage all the events",
   "main": "app.js",
   "scripts": {
-    "build": "npm run build:clean && cross-env NODE_ENV=production webpack --progress --colors",
-    "build:clean": "rimraf ./dist",
-    "start": "cross-env NODE_ENV=development nodemon server",
-    "start:production": "cross-env NODE_ENV=production node server",
-    "production": "npm run build",
-    "postinstall": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "repository": {
     "type": "git",

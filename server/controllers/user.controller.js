@@ -174,8 +174,9 @@ const login = async (req, res) => {
     const user = await User.findOne({
       email
     });
+    console.log(email);
     if (!user) return res.status(400).json({
-      msg: "This email does not exists"
+      msg: `${email} is not belong to any account`
     });
 
     const isMatch = await bcrypt.compare(password, user.password);

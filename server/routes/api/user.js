@@ -33,16 +33,6 @@ router.patch('/profile/update', auth, userController.updateUser);
 router.patch('/update/:id', auth, role.checkRole(role.ROLES.Admin), userController.updateUserRole);
 
 router.delete('/delete/:id', auth, role.checkRole(role.ROLES.Admin), userController.deleteUser);
-// Get a specific event
 
-// router.get('/:eventId', userController.getEvent);
-
-// // Delete a event 
-
-// router.delete('/:eventId', userController.deleteEvent);
-
-// // Update an event 
-
-// router.patch('/:eventId', userController.updateEvent);
 
 module.exports = router;
