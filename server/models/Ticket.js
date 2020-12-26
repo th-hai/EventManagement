@@ -16,7 +16,7 @@ const TicketSchema = mongoose.Schema({
         max: 20
     },
     ticketDetail: String,
-    quantity: Number,
+    quantity: Number
 });
 
 module.exports = mongoose.model('Tickets', TicketSchema);

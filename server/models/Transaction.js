@@ -30,11 +30,7 @@ const TransactionSchema = mongoose.Schema({
                 default: amount * price
             }
         }
-    ],
-    timeStamp: {
-        type: Date,
-        default: Date.now
-    }
-}, { collection: 'Transactions' });
+    ]
+}, { timestamps : true});
 
 module.exports = mongoose.model('Transactions', TransactionSchema);

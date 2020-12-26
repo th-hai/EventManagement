@@ -19,6 +19,8 @@ import PageNotFound from "./components/404/404";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import MainLayout from "./components/MainLayout";
+import Register from "./components/Register/Register";
+import ActivationEmail from "./components/Register/Activation";
 const routes = [
   {
     path: 'admin',
@@ -35,7 +37,21 @@ const routes = [
     children: [
       { path: 'home', element: <Home/>},
       { path: 'login', element: <Login/>},
+      { path: 'register', element: <Register/>},
+      { path: 'user', element: <ActivationEmail/>},
       { path: 'event', element: <EventPage/>}
+    ]
+  },
+  {
+    path: 'user',
+    element: <MainLayout/>,
+    children: [
+      {
+        path: 'active', 
+        children: [
+        { path: ':activation_token', element: <ActivationEmail/>}
+      ]
+    }
     ]
   }
   // {

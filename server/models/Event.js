@@ -38,6 +38,7 @@ const EventSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     }],
+    thumbnail: String,
     imageUrl: {
         type: Array,
         default: ['https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30']
@@ -63,6 +64,6 @@ const EventSchema = mongoose.Schema({
     dressCode: String,
     plannedCost: Number,
     actualCost: Number,
-});
+}, { timestamps : true});
 
 module.exports = mongoose.model('Events', EventSchema);

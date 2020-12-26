@@ -76,11 +76,10 @@ const register = async (req, res) => {
     const {
       name,
       email,
-      password,
-      phone
+      password
     } = req.body
 
-    if (!name || !email || !password || !phone)
+    if (!name || !email || !password)
       return res.status(400).json({
         msg: "Please fill in all fields."
       })
@@ -108,7 +107,6 @@ const register = async (req, res) => {
       name,
       email,
       password: passwordHash,
-      phone
     }
 
     const activation_token = createActivationToken(newUser)
