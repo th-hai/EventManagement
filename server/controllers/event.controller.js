@@ -2,6 +2,21 @@ const Event = require('../models/Event');
 
 // Get all the events 
 
+const getAll = (req, res) => {
+    Event.find({}, (err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: 'Your request could not be processed. Please try again.'
+        });
+      }
+      res.status(200).json({
+        events: data
+      });
+    });
+  };
+
+// get a page of event
+
 const get = async (req, res, next) => {
     const limit = 10
     const page = req.params.page || 1
@@ -41,9 +56,9 @@ const create = async (req, res, next) => {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         sponsors: req.body.sponsors,
-        category: req.body.category,
         thumbnail: req.body.thumbnail,
-        imageUrl: req.body.imageUrl,
+        categories: req.body.categories,
+        images: req.body.imageUrl,
         location: req.body.location,
         address: req.body.address,
         speakers: req.body.speakers,
@@ -104,8 +119,9 @@ const updateEvent = async (req, res, next) => {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         sponsors: req.body.sponsors,
-        category: req.body.category,
-        imageUrl: req.body.imageUrl,
+        thumbnail: req.body.thumbnail,
+        categories: req.body.categories,
+        images: req.body.imageUrl,
         location: req.body.location,
         address: req.body.address,
         speakers: req.body.speakers,
@@ -140,6 +156,7 @@ const updateEvent = async (req, res, next) => {
 
 module.exports = {
     get,
+    getAll,
     create,
     getEvent,
     deleteEvent,

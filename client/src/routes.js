@@ -46,12 +46,11 @@ const routes = [
     path: 'user',
     element: <MainLayout/>,
     children: [
-      {
-        path: 'active', 
+      { path: 'activate', 
         children: [
-        { path: ':activation_token', element: <ActivationEmail/>}
-      ]
-    }
+          { path: ':activation_token', element: <ActivationEmail/>}
+        ]
+      }
     ]
   }
   // {

@@ -19,26 +19,11 @@ app.use(fileUpload({
 }));
 
 // Middlewares
+const routes = require('./server/routes')
 
-const eventRouter = require('./server/routes/api/event');
-const userRouter = require('./server/routes/api/user');
-const authRouter = require('./server/routes/api/auth');
-const sponsorRouter = require('./server/routes/api/sponsor');
-const categoryRouter = require('./server/routes/api/category');
-const speakerRouter = require('./server/routes/api/speaker');
-const ticketRouter = require('./server/routes/api/ticket');
-const uploadRouter = require('./server/routes/api/upload');
 
 // ROUTES
-
-app.use('/events', eventRouter);
-app.use('/api/user', authRouter);
-app.use('/api', uploadRouter);
-app.use('/user', userRouter);
-app.use('/sponsors', sponsorRouter);
-app.use('/category', categoryRouter);
-app.use('/speakers', speakerRouter);
-app.use('/tickets', ticketRouter);
+app.use(routes);
 
 app.get('/', (req, res) => {
     res.send('We are on home');

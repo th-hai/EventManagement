@@ -12,8 +12,8 @@ router.post('/create', ticketController.create);
 
 router.get('/', ticketController.get);
 
-router.get('/update/:id', ticketController.updateTicket);
+router.patch(':id', ticketController.updateTicket);
 
-router.delete('/delete/:id', ticketController.deleteTicket);
+router.delete(':id', ticketController.deleteTicket);
 
 module.exports = router;
