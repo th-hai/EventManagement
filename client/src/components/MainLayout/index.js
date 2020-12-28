@@ -36,20 +36,17 @@ const useStyles = makeStyles((theme) => ({
 const MainLayout = () => {
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-
+  const mainContent = window.innerHeight - 200
   return (
     <div >
      
       <Navbar
         
       />
-      <div >
-        <div >
-          <div>
-            <Outlet />
+          <div style={{minHeight: mainContent}} >
+            <Outlet/>
           </div>
-        </div>
-      </div>
+
       <Footer/>
     </div>
   );

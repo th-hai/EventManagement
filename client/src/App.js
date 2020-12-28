@@ -4,9 +4,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
+  Navigate,
   Link,
   useRoutes,
+  Routes,
 } from "react-router-dom";
 
 import PageNotFound from "./components/404/404";
@@ -37,15 +38,12 @@ function App() {
   //   window.innerHeight - navbarRef.current.of
   // }
   return (
-  
-
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {routing}
-
+  
+        {routing}
+     
     </ThemeProvider>
-
   );
 }
-
 export default App;

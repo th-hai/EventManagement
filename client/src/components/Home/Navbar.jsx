@@ -17,7 +17,7 @@ const Navbar = () => {
                 </a>
                 <nav class="flex flex-wrap items-center justify-center pl-6 ml-6 text-base border-l border-gray-200 md:mr-auto">
                     <a href="/" class="mr-5 font-medium hover:text-gray-900">Home</a>
-                    <a href="/event" class="mr-5 font-medium hover:text-gray-900">Event</a>
+                    <a href="/events" class="mr-5 font-medium hover:text-gray-900">Event</a>
                     <a href="#_" class="mr-5 font-medium hover:text-gray-900">Speakers</a>
                     <a href="#_" class="mr-5 font-medium hover:text-gray-900">Sponsors</a>
                     <a href="/about" class="mr-5 font-medium hover:text-gray-900">About</a>

@@ -31,7 +31,7 @@ const uploadRouter = require('./server/routes/api/upload');
 
 // ROUTES
 
-app.use('/events', eventRouter);
+app.use('/api/events', eventRouter);
 app.use('/api/user', authRouter);
 app.use('/api', uploadRouter);
 app.use('/user', userRouter);
