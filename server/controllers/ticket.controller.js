@@ -50,6 +50,18 @@ const create = (req, res) => {
       });
     });
   };
+
+  const getTicket = async (req, res) => {
+    try {
+      const ticket = await Ticket.findById(req.params.ticketId);
+      if (ticket)
+          res.send(ticket);
+    } catch (err) {
+      res.send({
+          message: err.message
+      })
+    }
+  }
   
  const updateTicket = (req, res) => {
     const ticket = req.params.id;
@@ -104,6 +116,7 @@ const create = (req, res) => {
 module.exports = {
     create,
     get,
+    getTicket,
     updateTicket,
     deleteTicket
 }
