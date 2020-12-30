@@ -12,8 +12,12 @@ router.post('/create', ticketController.create);
 
 router.get('/', ticketController.get);
 
-router.patch(':id', ticketController.updateTicket);
+// Get a specific event
 
-router.delete(':id', ticketController.deleteTicket);
+router.get('/:ticketId', ticketController.getTicket);
+
+router.patch('/:id', ticketController.updateTicket);
+
+router.delete('/:id', ticketController.deleteTicket);
 
 module.exports = router;

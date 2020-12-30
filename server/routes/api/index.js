@@ -11,18 +11,18 @@ const uploadRouter = require('./upload');
 const adminRouter = require('./admin');
 
 // auth routes
-router.use('/event', eventRouter);
+router.use('/events', eventRouter);
 
 // user routes
-router.use('/user', userRouter);
+router.use('/users', userRouter);
 
 // sponsor routes
 
-router.use('/sponsor', sponsorRouter);
+router.use('/sponsors', sponsorRouter);
 
 // speaker routes
 
-router.use('/speaker', speakerRouter);
+router.use('/speakers', speakerRouter);
 
 // admin routes
 
@@ -30,6 +30,6 @@ router.use('/speaker', speakerRouter);
 
 // ticket routes 
 
-router.use('/ticket', ticketRouter);
+router.use('/tickets', ticketRouter);
 
 module.exports = router;

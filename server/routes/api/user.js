@@ -7,7 +7,7 @@ const role = require('../../middlewares/role');
 
 router.post('/register', userController.register);
 
-router.post('/activation', userController.activateEmail);
+router.post('/activate', userController.activateEmail);
 
 router.post('/login', userController.login);
 
