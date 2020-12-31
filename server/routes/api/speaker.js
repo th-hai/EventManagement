@@ -7,7 +7,7 @@ router.get('/', speakerController.get);
 
 // Add a speaker
 
-router.post('/', speakerController.create);
+router.post('/create', speakerController.create);
 
 // Get a specific speaker
 

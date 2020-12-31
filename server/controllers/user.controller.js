@@ -56,7 +56,7 @@ const register = async (req, res) => {
 
     const activation_token = createActivationToken(newUser)
 
-    const url = `${BASE_CLIENT_URL}/user/activate/${activation_token}`
+    const url = `${BASE_CLIENT_URL}/users/activate/${activation_token}`
     sendMail(email, url, "Verify your email address");
 
 
@@ -70,7 +70,7 @@ const register = async (req, res) => {
   }
 }
 
-const activateEmail = async (req, res, next) => {
+const activateEmail = async (req, res) => {
   try {
     const {
       activation_token
@@ -134,7 +134,7 @@ const login = async (req, res) => {
 
     res.cookie('refreshtoken', refresh_token, {
       httpOnly: true,
-      path: '/user/refresh_token',
+      path: '/api/users/refresh_token',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -210,7 +210,7 @@ const resetPassword = async (req, res) => {
       password
     } = req.body
     const passwordHash = await bcrypt.hash(password, 12)
-
+    console.log(req.user.id)
     await User.findOneAndUpdate({
       _id: req.user.id
     }, {
@@ -253,7 +253,7 @@ const getUserAllInfor = async (req, res) => {
 const logOut = async (req, res) => {
   try {
     res.clearCookie('refreshtoken', {
-      path: '/user/refresh_token'
+      path: '/api/users/refresh_token'
     })
     return res.json({
       msg: "Logged out."

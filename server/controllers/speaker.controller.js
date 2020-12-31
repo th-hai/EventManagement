@@ -17,6 +17,7 @@ const get = async (req, res, next) => {
 const create = async (req, res, next) => {
     const speaker = new Speaker({
         name: req.body.name,
+        job: req.body.job,
         bio: req.body.bio,
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
@@ -70,6 +71,7 @@ const updateSpeaker = async (req, res, next) => {
         }, {
             $set: {
                 name: req.body.name,
+                job: req.body.job,
                 bio: req.body.bio,
                 phoneNumber: req.body.phoneNumber,
                 email: req.body.email,

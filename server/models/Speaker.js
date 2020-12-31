@@ -5,6 +5,10 @@ const SpeakerSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    job: {
+        type: String,
+        required: true
+    },
     phoneNumber: {
         type: String,
         required: true,
@@ -37,6 +41,6 @@ const SpeakerSchema = mongoose.Schema({
         type: String,
         default: "http://placekitten.com/300/300"
     }
-}, { collection: 'Speakers'});
+});
 
 module.exports = mongoose.model('Speakers', SpeakerSchema);

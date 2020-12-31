@@ -3,7 +3,7 @@ import axios from "axios";
 import Carousel from 'react-material-ui-carousel'
 import {Paper} from '@material-ui/core'
 const CarouselSlider = (props) => {
-    const { event } = props.event
+    const { event } = props
 
     return(
         <Carousel className="w-9/12 h-screen mx-auto mt-40" indicators={true} navButtonsAlwaysInvisible={true}>

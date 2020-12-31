@@ -5,11 +5,11 @@ const SponsorSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    logoUrl: {
+    logo: {
         type: String,
-        default: "http://placekitten.com/200/200"
+        default: "https://www.runvictoriamarathon.com/wp-content/uploads/2017/02/sponsor-logo-placeholder.png"
     },
     description: String
-}, { collection: "Sponsors"});
+});
 
 module.exports = mongoose.model('Sponsors', SponsorSchema);

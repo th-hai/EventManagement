@@ -2,6 +2,7 @@ import CustomerListView from "../src/views/customer/CustomerListView";
 import AdminLayout from "./components/AdminLayout";
 import React from "react";
 import { Navigate } from "react-router-dom";
+import {useSelector} from "react-redux"
 import EventPage from "./components/Event/EventPage";
 import PageNotFound from "./components/404/404";
 import Home from "./components/Home/Home";
@@ -10,6 +11,7 @@ import MainLayout from "./components/MainLayout";
 import Register from "./components/Register/Register";
 import ActivationEmail from "./components/Register/Activation";
 import EventDetail from "./components/Event/EventDetail";
+
 const routes = [
   {
     path: "admin",
@@ -46,7 +48,7 @@ const routes = [
     element: <MainLayout />,
     children: [
       {
-        path: "active",
+        path: "activate",
         children: [{ path: ":activation_token", element: <ActivationEmail /> }],
       },
     ],

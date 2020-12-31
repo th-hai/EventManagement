@@ -7,7 +7,7 @@ const EventPage = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/events')
+    axios.get('/api/event')
     .then(res => {
       setEvents(res.data.events);
     })

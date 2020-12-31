@@ -10,42 +10,74 @@ import {
   Routes,
 } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
-
-// import PageNotFound from "./components/404/404";
-// import Navbar from "./components/Home/Navbar";
-// import Footer from "./components/Home/Footer";
-// import SearchBar from "./components/Event/SearchBar";
-// import EventPage from "./components/Event/EventPage";
-// import Login from "./components/Login/Login";
-// import Register from "./components/Register/Register";
-// import About from "./components/About/About";
-// import Contact from "./components/Contact/Contact";
-
-// import CustomerListView from "./views/customer/CustomerListView";
+import axios from 'axios'
 import { ThemeProvider } from "@material-ui/core";
 import GlobalStyles from "../src/components/GlobalStyles";
 import "../src/mixins/chartjs";
 import theme from "../src/theme";
 import routes from "../src/routes";
+import {dispatchLogin, dispatchGetUser, fetchUser} from '../src/redux/actions/authAction'
+import Login from "./components/Login/Login";
+import PageNotFound from "./components/404/404";
+import Home from "./components/Home/Home";
+import MainLayout from "./components/MainLayout";
+import Register from "./components/Register/Register";
+import ActivationEmail from "./components/Register/Activation";
+import ForgotPassword from "./components/Register/ForgetPassword";
+import ResetPassword from "./components/Register/ResetPassword";
+
+
 // import DashboardLayout from "./components/AdminLayout";
 function App() {
   const routing = useRoutes(routes);
   const dispatch = useDispatch();
   const token = useSelector(state => state.token)
-  // const [contentHeight, setContentHeight] = React.useState(
-  //   window.innerHeight - 200
-  // );
-  // const navbarRef = useRef();
-  // const footerRef = useRef();
-  // const Content = () => {
-  //   window.innerHeight - navbarRef.current.of
-  // }
+  const auth = useSelector(state => state.auth);
+
+  useEffect(() => {
+    const firstLogin = localStorage.getItem('firstLogin')
+    if(firstLogin){
+      const getToken = async () => {
+        const res = await axios.post('/api/users/refresh_token', null)
+        dispatch({type: 'GET_TOKEN', payload: res.data.access_token})
+      }
+      getToken()
+    }
+  },[auth.isLogged, dispatch])
+
+  useEffect(() => {
+    if(token){
+      const getUser = () => {
+        dispatch(dispatchLogin())
+
+        return fetchUser(token).then(res => {
+          dispatch(dispatchGetUser(res))
+        })
+      }
+      getUser()
+    }
+  },[token, dispatch])
+
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-  
-        {routing}
-     
+        <Routes>
+          <Route path="/" element={<MainLayout/>} >
+            <Route path="/" element={<Home/>} />,
+            <Route path="home" element={<Navigate to="/"/>} />,
+            <Route path="login" element={ auth.isLogged ? <PageNotFound/>: <Login/>} />
+            <Route path="register" element={ auth.isLogged ? <PageNotFound/> : <Register/>} />,
+            <Route path="user" element={<ActivationEmail/>} />,
+            <Route path="/forget" element={<ForgotPassword/>} />,
+            <Route path="*" element={<PageNotFound/>} />
+          </Route>
+          <Route path="user" element={<MainLayout/>} >
+            <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,
+            <Route path="/reset/:token" element={ auth.isLogged ? <PageNotFound/> : <ResetPassword />}/>
+          </Route>
+
+        </Routes>
     </ThemeProvider>
   );
 }

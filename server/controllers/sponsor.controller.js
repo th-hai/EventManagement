@@ -18,7 +18,7 @@ const get = async (req, res, next) => {
 const create = async (req, res, next) => {
     const sponsor = new Sponsor({
         name: req.body.name,
-        logoUrl: req.body.bio,
+        logo: req.body.logo,
         description: req.body.description
     });
 
@@ -68,7 +68,7 @@ const updateSponsor = async (req, res, next) => {
         }, {
             $set: {
                 name: req.body.name,
-                logoUrl: req.body.bio,
+                logo: req.body.logo,
                 description: req.body.description
             }
         })

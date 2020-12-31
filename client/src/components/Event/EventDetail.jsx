@@ -9,7 +9,7 @@ const EventDetail = (props) => {
     let { id } = useParams();
      const [event, setEvent] = useState({});
     useEffect(() => {
-        axios.get('/api/events/' + id)
+        axios.get('/api/event/' + id)
         .then(res => {
           setEvent(res.data);
     

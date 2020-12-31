@@ -24,19 +24,12 @@ const EventSchema = mongoose.Schema({
         default: Date.now
     },
     sponsors: [{
-        sponsorId: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'Sponsors'
-        },
-        amount: {
-            type: Number,
-            required: true
-        }
-    }],
-    category: [{
         type: Schema.Types.ObjectId,
-        ref: 'Category'
+        ref: 'Sponsors'
+    }],
+    categories: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Categories'
     }],
     thumbnail: String,
     imageUrl: {

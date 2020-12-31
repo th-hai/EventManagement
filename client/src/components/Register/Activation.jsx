@@ -10,9 +10,11 @@ function ActivationEmail() {
 
     useEffect(() => {
         if(activation_token){
+            console.log(activation_token)
             const activationEmail = async () => {
                 try {
-                    const res = await axios.post('/user/activation', {activation_token})
+                    const res = await axios.post('/api/users/activate', {activation_token})
+                    console.log(res);
                     setSuccess(res.data.msg)
                 } catch (err) {
                     err.response.data.msg && setErr(err.response.data.msg)

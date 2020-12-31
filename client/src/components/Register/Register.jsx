@@ -22,7 +22,6 @@ const Register = () => {
   const handleChangeInput = e => {
       const {name, value} = e.target
       setUser({...user, [name]:value, err: '', success: ''})
-      console.log(user);
   }
 
 
@@ -41,7 +40,7 @@ const Register = () => {
           return setUser({...user, err: "Password did not match.", success: ''})
 
       try {
-          const res = await axios.post('/user/register', {
+          const res = await axios.post('/api/users/register', {
               name, email, password
           })
 

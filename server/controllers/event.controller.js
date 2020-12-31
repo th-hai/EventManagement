@@ -15,6 +15,7 @@ const getAll = (req, res) => {
     });
   };
 
+  
 // get a page of event
 
 const get = async (req, res, next) => {
@@ -153,6 +154,60 @@ const updateEvent = async (req, res, next) => {
       );
 }
 
+// Get all tickets by event
+
+const getTicketsByEvent = async (req, res) => {
+  try {
+    const event = await Event.findOne({ _id: req.params.eventId }).populate('tickets');
+    if (event)
+        res.send(event.tickets);
+  } catch (err) {
+    res.send({
+        message: err.message
+    })
+}
+}
+
+// Get all categories by event
+
+const getCategoriesByEvent = async (req, res) => {
+  try {
+    const event = await Event.findOne({ _id: req.params.eventId }).populate('categories');
+    if (event)
+        res.send(event.categories);
+  } catch (err) {
+    res.send({
+        message: err.message
+    })
+}
+}
+
+// Get all speakers by event
+
+const getSpeakersByEvent = async (req, res) => {
+  try {
+    const event = await Event.findOne({ _id: req.params.eventId }).populate('speakers');
+    if (event)
+        res.send(event.speakers);
+  } catch (err) {
+    res.send({
+        message: err.message
+    })
+}
+}
+// Get all sponsors by event
+
+const getSponsorsByEvent = async (req, res) => {
+  try {
+    const event = await Event.findOne({ _id: req.params.eventId }).populate('sponsors');
+    if (event)
+        res.send(event.sponsors);
+  } catch (err) {
+    res.send({
+        message: err.message
+    })
+}
+}
 
 module.exports = {
     get,
@@ -160,5 +215,9 @@ module.exports = {
     create,
     getEvent,
     deleteEvent,
-    updateEvent
+    updateEvent,
+    getTicketsByEvent,
+    getSpeakersByEvent,
+    getCategoriesByEvent,
+    getSponsorsByEvent
 }

@@ -32,4 +32,8 @@ router.use('/speakers', speakerRouter);
 
 router.use('/tickets', ticketRouter);
 
+// category routes
+
+router.use('/category', categoryRouter);
+
 module.exports = router;

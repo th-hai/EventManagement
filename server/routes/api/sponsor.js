@@ -7,7 +7,7 @@ router.get('/', sponsorController.get);
 
 // Add a sponsor
 
-router.post('/', sponsorController.create);
+router.post('/create', sponsorController.create);
 
 // Get a specific sponsor
 

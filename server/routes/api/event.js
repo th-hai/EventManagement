@@ -17,6 +17,23 @@ router.post('/create', eventController.create);
 
 router.get('/:eventId', eventController.getEvent);
 
+// Get tickets by event
+
+router.get('/:eventId/tickets', eventController.getTicketsByEvent);
+
+// Get speakers by event
+
+router.get('/:eventId/speakers', eventController.getSpeakersByEvent);
+
+// Get sponsors by event
+
+router.get('/:eventId/sponsors', eventController.getSponsorsByEvent);
+
+// Get categories by event
+
+router.get('/:eventId/categories', eventController.getCategoriesByEvent);
+
+
 // Delete a event 
 
 router.delete('/:eventId', eventController.deleteEvent);

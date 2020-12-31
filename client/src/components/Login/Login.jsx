@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import FloatingLabelInput from "../Register/FloatingLabelInput";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {showErrMsg, showSuccessMsg} from '../utils/Notification';
@@ -34,10 +34,8 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('/user/login', {email, password})
+            const res = await axios.post('/api/users/login', {email, password})
             setUser({...user, err: '', success: res.data.msg})
-            console.log(res);
-            console.log(email, password);
             localStorage.setItem('firstLogin', true)
 
             dispatch(dispatchLogin())
@@ -103,7 +101,7 @@ const Login = () => {
           </label>
     
           <div class="justify-start w-full px-4 mt-6 font-sans text-xs leading-6 text-center text-gray-500">
-            <a class="block text-lg text-indigo-700 fontme hover:underline" href="/forgot_password">Forgot password</a>
+            <a class="block text-lg text-indigo-700 fontme hover:underline"><Link to="/forget">Forgot your password</Link></a>
           </div>
           <div class="mt-6">
             <button type="submit"
@@ -114,7 +112,7 @@ const Login = () => {
       </div>
       <div class="justify-start w-full px-4 mt-6 font-sans text-lg leading-6 text-center text-gray-500">
         Don't have an account?
-        <a class="block text-base text-indigo-700 fontme hover:underline mt-4" href="#">Sign up</a>
+        <a class="block text-base text-indigo-700 fontme hover:underline mt-4"><Link to="/register">Sign up</Link></a>
       </div>
     </div>
   </div>
