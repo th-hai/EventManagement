@@ -29,5 +29,14 @@ router.patch(':id', auth, role.checkRole(role.ROLES.Admin), userController.updat
 
 router.delete(':id', auth, role.checkRole(role.ROLES.Admin), userController.deleteUser);
 
+// Social login
+
+router.post('/google_login', userController.googleLogin);
+
+// Facebook login
+
+router.post('/facebook_login', userController.facebookLogin);
+
+// router.post('/facebook_login', userController.googleLogin);
 
 module.exports = router;

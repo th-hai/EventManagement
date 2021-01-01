@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { dispatchLogin } from '../../redux/actions/authAction'
 import { useDispatch } from 'react-redux'
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 const initialState = {
   email: '',
@@ -30,7 +32,6 @@ const Login = () => {
         setUser({...user, [name]:value, err: '', success: ''})
     }
 
-
     const handleSubmit = async e => {
         e.preventDefault()
         try {
@@ -46,6 +47,39 @@ const Login = () => {
             setUser({...user, err: err.response.data.msg, success: ''})
         }
     }
+
+    const responseGoogle = async (response) => {
+      try {
+          const res = await axios.post('/api/users/google_login', {tokenId: response.tokenId})
+
+          setUser({...user, error:'', success: res.data.msg})
+          localStorage.setItem('firstLogin', true)
+
+          dispatch(dispatchLogin())
+          navigate('/')
+      } catch (err) {
+          err.response.data.msg && 
+          setUser({...user, err: err.response.data.msg, success: ''})
+      }
+  }
+
+  const responseFacebook = async (response) => {
+      try {
+        console.log(response)
+          const {accessToken, userID} = response
+          const res = await axios.post('/api/users/facebook_login', {accessToken, userID})
+
+          setUser({...user, error:'', success: res.data.msg})
+          localStorage.setItem('firstLogin', true)
+
+          dispatch(dispatchLogin())
+          navigate('/')
+      } catch (err) {
+          err.response.data.msg && 
+          setUser({...user, err: err.response.data.msg, success: ''})
+      }
+  }
+
 
   return (
     <div class=" z-10 bg-white ">
@@ -66,17 +100,31 @@ const Login = () => {
             {err && showErrMsg(err)}
             {success && showSuccessMsg(success)}
       <div class="px-4 py-2 pt-1 pt-3 mt-1 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
-      
-        <button
+            <FacebookLogin
+              appId="1080174515760280"
+              autoLoad={false}
+              fields="name,email,picture"
+              // onClick={componentClicked}
+              callback={responseFacebook}
+              cssClass="justify-center w-full px-3 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none text-xl flex justify-start items-center" />
+        {/* <button
           class="justify-center w-full px-3 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none text-xl flex justify-start items-center">
           <FontAwesomeIcon icon={faFacebookSquare} size="lg" className="mr-4"></FontAwesomeIcon>  Login with Facebook
-        </button>
+        </button> */}
       </div>
       <div class="px-4 py-2 pt-1 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
-        <button
+        {/* <div
           class="justify-center w-full px-3 py-2 font-bold text-white bg-red-500 rounded-md hover:bg-red-700 focus:outline-none text-xl flex items-center ">
           <FontAwesomeIcon icon={faGoogle} size="lg" className="mr-3 -ml-6"></FontAwesomeIcon> Login with Google
-        </button>
+        </div> */}
+        <GoogleLogin
+          clientId="738042331922-0bqj1k8rjstgbv1i98vsgct6jfvfqui6.apps.googleusercontent.com"
+          buttonText="Login with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          className="justify-center w-full px-3 py-2 font-bold text-white bg-red-500 rounded-md hover:bg-red-700 focus:outline-none text-xl flex items-center"
+        />
       </div>
       <div class="w-full py-4 text-xl text-center text-gray-600">
         or login with email address

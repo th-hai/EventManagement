@@ -4,15 +4,24 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
 const sendMail = require('../controllers/mail.controller');
+const fetch = require('node-fetch');
+const {
+  BASE_CLIENT_URL,
+  MAILING_SERVICE_CLIENT_ID
+} = process.env;
+const {
+  google
+} = require('googleapis');
+const {
+  OAuth2
+} = google.auth;
+const client = new OAuth2(MAILING_SERVICE_CLIENT_ID);
 
 // Bring in Models & Helpers
 const User = require('../models/User');
 const auth = require('../middlewares/auth');
 const role = require('../middlewares/role');
 
-const {
-  BASE_CLIENT_URL
-} = process.env;
 
 
 
@@ -267,38 +276,66 @@ const logOut = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const {name, address, dateofBirth, phone, avatarUrl} = req.body
-    await User.findOneAndUpdate({_id: req.user.id}, {
-      name, address, dateofBirth, phone, avatarUrl
+    const {
+      name,
+      address,
+      dateofBirth,
+      phone,
+      avatarUrl
+    } = req.body
+    await User.findOneAndUpdate({
+      _id: req.user.id
+    }, {
+      name,
+      address,
+      dateofBirth,
+      phone,
+      avatarUrl
     })
 
-    res.json({msg: "Update Success!"})
-} catch (err) {
-    return res.status(500).json({msg: err.message})
-}
+    res.json({
+      msg: "Update Success!"
+    })
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message
+    })
+  }
 }
 
 const updateUserRole = async (req, res) => {
   try {
-    const {role} = req.body
+    const {
+      role
+    } = req.body
 
-    await User.findOneAndUpdate({_id: req.params.id}, {
-        role
+    await User.findOneAndUpdate({
+      _id: req.params.id
+    }, {
+      role
     })
 
-    res.json({msg: "Update Success!"})
-} catch (err) {
-    return res.status(500).json({msg: err.message})
-}
+    res.json({
+      msg: "Update Success!"
+    })
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message
+    })
+  }
 }
 
 const deleteUser = async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.params.id)
-        res.json({msg: "Successfully remove user!"})
-    } catch (err) {
-        return res.status(500).json({msg: err.message})
-    }
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.json({
+      msg: "Successfully remove user!"
+    })
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message
+    })
+  }
 
 }
 const createActivationToken = (payload) => {
@@ -319,6 +356,164 @@ const createRefreshToken = (payload) => {
   });
 }
 
+const googleLogin = async (req, res) => {
+  try {
+    const {
+      tokenId
+    } = req.body
+
+    const verify = await client.verifyIdToken({
+      idToken: tokenId,
+      audience: process.env.MAILING_SERVICE_CLIENT_ID
+    })
+
+    const {
+      email_verified,
+      email,
+      name,
+      picture
+    } = verify.payload
+
+    const password = email + process.env.GOOGLE_SECRET
+
+    const passwordHash = await bcrypt.hash(password, 12)
+
+    if (!email_verified) return res.status(400).json({
+      msg: "Email verification failed."
+    })
+
+    const user = await User.findOne({
+      email
+    })
+
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user.password)
+      if (!isMatch) return res.status(400).json({
+        msg: "These already exists an account with this email. Please login with your email"
+      })
+
+      const refresh_token = createRefreshToken({
+        id: user._id
+      })
+      res.cookie('refreshtoken', refresh_token, {
+        httpOnly: true,
+        path: '/api/users/refresh_token',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      })
+
+      res.json({
+        msg: "Login success!"
+      })
+    } else {
+      const newUser = new User({
+        name,
+        email,
+        password: passwordHash,
+        avatarUrl: picture
+      })
+
+      await newUser.save()
+
+      const refresh_token = createRefreshToken({
+        id: newUser._id
+      })
+      res.cookie('refreshtoken', refresh_token, {
+        httpOnly: true,
+        path: '/api/users/refresh_token',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      })
+
+      res.json({
+        msg: "Login success!"
+      })
+    }
+
+
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message
+    })
+  }
+}
+
+const facebookLogin = async (req, res) => {
+  try {
+    const {
+      accessToken,
+      userID
+    } = req.body
+
+    const URL = `https://graph.facebook.com/v2.9/${userID}/?fields=id,name,email,picture&access_token=${accessToken}`
+
+    const data = await fetch(URL).then(res => res.json()).then(res => {
+      return res
+    })
+
+    const {
+      email,
+      name,
+      picture
+    } = data
+
+    const password = email + process.env.FACEBOOK_SECRET
+
+    const passwordHash = await bcrypt.hash(password, 12)
+
+    const user = await User.findOne({
+      email
+    })
+
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user.password)
+      if (!isMatch) return res.status(400).json({
+        msg: "These already exists an account with this email. Please login with your email"
+      })
+
+      const refresh_token = createRefreshToken({
+        id: user._id
+      })
+      res.cookie('refreshtoken', refresh_token, {
+        httpOnly: true,
+        path: '/api/users/refresh_token',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      })
+
+      res.json({
+        msg: "Login success!"
+      })
+    } else {
+      const newUser = new User({
+        name,
+        email,
+        password: passwordHash,
+        avatarUrl: picture.data.url
+      })
+
+      await newUser.save()
+
+      const refresh_token = createRefreshToken({
+        id: newUser._id
+      })
+      res.cookie('refreshtoken', refresh_token, {
+        httpOnly: true,
+        path: '/api/users/refresh_token',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      })
+
+      res.json({
+        msg: "Login success!"
+      })
+    }
+
+
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message
+    })
+  }
+
+}
+
 module.exports = {
   register,
   activateEmail,
@@ -331,5 +526,7 @@ module.exports = {
   logOut,
   updateUser,
   updateUserRole,
-  deleteUser
+  deleteUser,
+  googleLogin,
+  facebookLogin
 };

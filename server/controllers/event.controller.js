@@ -19,7 +19,7 @@ const getAll = (req, res) => {
 // get a page of event
 
 const get = async (req, res, next) => {
-    const limit = 10
+    const limit = 9
     const page = req.params.page || 1
 
     try {
