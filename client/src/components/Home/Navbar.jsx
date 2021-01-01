@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 import ReactDOM from 'react-dom'
 const Navbar = () => {

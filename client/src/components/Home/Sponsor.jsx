@@ -9,7 +9,7 @@ const Sponsor = () => {
   return (
     <section class="p-10  flex items-center justify-center flex-col w-full mt-24">
       <h2 class="mb-10 text-4xl font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:text-5xl sm:leading-none md:text-6xl sm:text-center">
-        Official <span class="inline-block text-indigo-500">Sponsor</span>
+        Official <span class="inline-block text-indigo-500 pl-4">Sponsor</span>
       </h2>
       <div className="grid grid-cols-3 gap-20 mt-20 w-4/5 justify-items-center">
           <div class="h-full w-full relative cursor-pointer mb-5">

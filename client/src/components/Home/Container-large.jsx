@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContainerLarge = () => {
     return (
-        <div class="flex my-20 h-full px-8 mx-auto  ">
+        <div class="flex my-20 h-full px-8 mx-auto mb-40">
     <div class="w-1/2 h-full">
         <div class="flex flex-col overflow-hidden rounded-lg shadow-2xl">
             <div class="flex items-center h-8 text-white bg-gray-900">
@@ -10,7 +10,7 @@ const ContainerLarge = () => {
                 <div class="w-3 h-3 ml-2 bg-yellow-400 rounded-full"></div>
                 <div class="w-3 h-3 ml-2 bg-green-400 rounded-full"></div>
             </div>
-            <img src="https://images.unsplash.com/photo-1504985954001-5737b2af529e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2879&q=80"
+            <img src="https://images.unsplash.com/photo-1544815633-1a8065078285?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
                 alt="A wooden table that has some accessories on it." class="object-cover w-full h-full"/>
         </div>
     </div>
