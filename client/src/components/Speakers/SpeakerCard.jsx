@@ -14,7 +14,7 @@ const SpeakersContainer = (props) => {
 function Item(props) {
   const { speaker } = props;
   return (
-    <div>
+    <a href={"/speakers/" + speaker._id}>
         <div
           class="bg-cover bg-center w-full h-full text-white  object-fill relative"
          style={{
@@ -30,7 +30,7 @@ function Item(props) {
               </div>
           </div>
         </div>
-    </div>
+    </a>
   );
 }
 export default SpeakersContainer;

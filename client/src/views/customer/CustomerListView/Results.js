@@ -98,10 +98,10 @@ const Results = ({ className, customers, ...rest }) => {
                   />
                 </TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Time</TableCell>
                 <TableCell>Location</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Registration date</TableCell>
+                <TableCell>Planned Cost</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

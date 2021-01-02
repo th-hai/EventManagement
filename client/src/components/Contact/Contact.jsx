@@ -1,5 +1,6 @@
 import React from "react";
 const Contact = (props) => {
+  console.log(props)
   return (
     <section class="blog text-gray-700 body-font h-full" style={{minHeight: props.minHeight}}>
       <div class="container px-5 py-24 mx-auto h-full ">

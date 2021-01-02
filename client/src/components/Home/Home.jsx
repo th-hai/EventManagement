@@ -31,7 +31,7 @@ function Home() {
         <ContainerLarge />
         
         <Banner/>
-        <h2 class="w-screen flex pl-52 text-4xl font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:text-5xl sm:leading-none md:text-6xl sm:text-center">
+        <h2 class="w-screen flex pl-52 text-4xl font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:text-5xl sm:leading-none md:text-6xl sm:text-center mb-24">
         Who's <span class="inline-block text-indigo-500 pl-4">Speaking</span>
       </h2>
         <SpeakersContainer speakers={speakers}/>

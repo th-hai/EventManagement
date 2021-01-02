@@ -39,7 +39,7 @@ const items = [
   {
     href: '/admin/customers',
     icon: UsersIcon,
-    title: 'Event'
+    title: 'Events'
   },
   {
     href: '/admin/products',

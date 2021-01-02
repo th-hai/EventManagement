@@ -29,6 +29,11 @@ import EventPage from "./components/Event/EventPage";
 import EventDetail from "./components/Event/EventDetail";
 import SpeakersContainer from "./components/Speakers/SpeakerCard";
 import SpeakersPage from "./components/Speakers/SpeakersPage";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import SpeakerDetail from "./components/Speakers/SpeakerDetail";
+import DashboardLayout from "./components/AdminLayout";
+import CustomerListView from "./views/customer/CustomerListView";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -77,7 +82,13 @@ function App() {
             <Route path="/events" element={<EventPage/>} />,
             <Route path="/events/:id" element={<EventDetail/>} />,
             <Route path="/speakers" element={<SpeakersPage/>} />,
+            <Route path="/speakers/:id" element={<SpeakerDetail/>} />,
+            <Route path="/about" element={<About/>} />,
+            <Route path="/contact" element={<Contact/>}/>
             <Route path="*" element={<PageNotFound/>} />
+          </Route>
+          <Route path="/dashboard" element={<DashboardLayout/>}>
+            <Route path="/events" element={<CustomerListView/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

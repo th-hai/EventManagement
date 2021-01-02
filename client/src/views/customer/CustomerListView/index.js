@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Box,
   Container,
@@ -21,7 +23,19 @@ const useStyles = makeStyles((theme) => ({
 const CustomerListView = () => {
   const classes = useStyles();
   const [customers] = useState(data);
+  const [events, setEvents] = useState([]);
 
+  useEffect(() => {
+    axios.get('/api/events')
+    .then(res => {
+      setEvents(res.data.events);
+      console.log(res)
+      console.log(res.data.events)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
   return (
     <Page
       className={classes.root}
