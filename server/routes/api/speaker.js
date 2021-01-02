@@ -3,6 +3,10 @@ const router = express.Router();
 const speakerController = require('../../controllers/speaker.controller')
 // Get all the speakers
 
+router.get('/all', speakerController.getAll);
+
+// Get all the speakers
+
 router.get('/', speakerController.get);
 
 // Add a speaker

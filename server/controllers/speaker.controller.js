@@ -1,5 +1,18 @@
 const Speaker = require('../models/Speaker');
 
+//Get all the speakers
+const getAll = (req, res) => {
+    Speaker.find({}, (err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: 'Your request could not be processed. Please try again.'
+        });
+      }
+      res.status(200).json({
+        speakers: data
+      });
+    });
+  };
 // Get all the speakers 
 
 const get = async (req, res, next) => {
@@ -53,7 +66,7 @@ const getSpeaker = async (req, res, next) => {
 
 const deleteSpeaker = async (req, res, next) => {
     try {
-        const removeSpeaker = await Speaker.remove({
+        const removeSpeaker = await Speaker.deleteOne({
             _id: req.params.speakerId
         })
         res.json(removeSpeaker);
@@ -89,6 +102,7 @@ const updateSpeaker = async (req, res, next) => {
 
 
 module.exports = {
+    getAll,
     get,
     create,
     getSpeaker,

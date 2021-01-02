@@ -1,5 +1,18 @@
 const Sponsor = require('../models/Sponsor');
 
+//Get all the sponsors
+const getAll = (req, res) => {
+    Sponsor.find({}, (err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: 'Your request could not be processed. Please try again.'
+        });
+      }
+      res.status(200).json({
+        sponsors: data
+      });
+    });
+  };
 // Get all the speakers 
 
 const get = async (req, res, next) => {
@@ -50,7 +63,7 @@ const getSponsor = async (req, res, next) => {
 
 const deleteSponsor = async (req, res, next) => {
     try {
-        const removeSponsor = await Sponsor.remove({
+        const removeSponsor = await Sponsor.deleteOne({
             _id: req.params.sponsorId
         })
         res.json(removeSponsor);
@@ -82,6 +95,7 @@ const updateSponsor = async (req, res, next) => {
 
 
 module.exports = {
+    getAll,
     get,
     create,
     getSponsor,

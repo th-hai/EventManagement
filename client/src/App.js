@@ -34,6 +34,7 @@ import Contact from "./components/Contact/Contact";
 import SpeakerDetail from "./components/Speakers/SpeakerDetail";
 import DashboardLayout from "./components/AdminLayout";
 import CustomerListView from "./views/customer/CustomerListView";
+import SpeakerListView from "./views/speaker/SpeakerListView";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -87,8 +88,9 @@ function App() {
             <Route path="/contact" element={<Contact/>}/>
             <Route path="*" element={<PageNotFound/>} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout/>}>
+          <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/>}>
             <Route path="/events" element={<CustomerListView/>}/>
+            <Route path="/speakers" element={<SpeakerListView/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

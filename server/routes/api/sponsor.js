@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const sponsorController = require('../../controllers/sponsor.controller');
+// Get all the events
+
+router.get('/all', sponsorController.getAll);
 // Get all the sponsors
 
 router.get('/', sponsorController.get);
