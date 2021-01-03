@@ -25,6 +25,16 @@ import Register from "./components/Register/Register";
 import ActivationEmail from "./components/Register/Activation";
 import ForgotPassword from "./components/Register/ForgetPassword";
 import ResetPassword from "./components/Register/ResetPassword";
+import EventPage from "./components/Event/EventPage";
+import EventDetail from "./components/Event/EventDetail";
+import SpeakersContainer from "./components/Speakers/SpeakerCard";
+import SpeakersPage from "./components/Speakers/SpeakersPage";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import SpeakerDetail from "./components/Speakers/SpeakerDetail";
+import DashboardLayout from "./components/AdminLayout";
+import CustomerListView from "./views/customer/CustomerListView";
+import SpeakerListView from "./views/speaker/SpeakerListView";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -70,7 +80,17 @@ function App() {
             <Route path="register" element={ auth.isLogged ? <PageNotFound/> : <Register/>} />,
             <Route path="user" element={<ActivationEmail/>} />,
             <Route path="/forget" element={<ForgotPassword/>} />,
+            <Route path="/events" element={<EventPage/>} />,
+            <Route path="/events/:id" element={<EventDetail/>} />,
+            <Route path="/speakers" element={<SpeakersPage/>} />,
+            <Route path="/speakers/:id" element={<SpeakerDetail/>} />,
+            <Route path="/about" element={<About/>} />,
+            <Route path="/contact" element={<Contact/>}/>
             <Route path="*" element={<PageNotFound/>} />
+          </Route>
+          <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/>}>
+            <Route path="/events" element={<CustomerListView/>}/>
+            <Route path="/speakers" element={<SpeakerListView/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

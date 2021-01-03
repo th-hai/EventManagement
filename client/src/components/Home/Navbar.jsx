@@ -1,15 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 import ReactDOM from 'react-dom'
 const Navbar = () => {
     const navigate = useNavigate();
     const auth = useSelector(state => state.auth);
-    const {user, isLogged} = auth
+    const {user, isLogged, isAdmin} = auth
 
 
     const handleLogout = async () => {
@@ -84,7 +84,8 @@ const Navbar = () => {
                    
                     <a class="mr-5 font-medium hover:text-gray-900">
                         {
-                            isLogged ? <Link to="/users/profile">{user.name}</Link> : <Link to="/login">Login</Link>
+                            
+                            isLogged ? <Link to="/users/profile">{user.name} </Link> : <Link to="/login">Login</Link>
                         }
                         
                         </a>

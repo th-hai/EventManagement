@@ -6,7 +6,7 @@ import {
   Container,
   makeStyles
 } from '@material-ui/core';
-import Page from '../../../../src/components/Page';
+import Page from '../../../components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
 
@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const EventListView = () => {
+const SpeakerListView = () => {
   const classes = useStyles();
 
-  const [events, setEvents] = useState([]);
+  const [speakers, setSpeakers] = useState([]);
 
   useEffect(() => {
     RecallEvents()
@@ -30,9 +30,9 @@ const EventListView = () => {
 
 const RecallEvents = () =>
 {
-  axios.get('/api/events/all')
+  axios.get('/api/speakers/all')
   .then(res => {
-    setEvents(res.data.events);
+    setSpeakers(res.data.speakers);
   })
   .catch(error => {
     console.log(error)
@@ -41,16 +41,16 @@ const RecallEvents = () =>
   return (
     <Page
       className={classes.root}
-      title="Events"
+      title="Customers"
     >
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results events={events} onReload={RecallEvents} />
+          <Results speakers={speakers} onReload={RecallEvents} />
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default EventListView;
+export default SpeakerListView;

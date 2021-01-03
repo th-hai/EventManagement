@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import EventCard from "./EventCard";
 import SearchBar from "./SearchBar";
-import axios from "axios";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/event')
+    axios.get('/api/events')
     .then(res => {
       setEvents(res.data.events);
+      console.log(res)
+      console.log(res.data.events)
     })
     .catch(error => {
       console.log(error)

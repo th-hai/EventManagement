@@ -26,7 +26,7 @@ const EventCard = (props) => {
           </div>
           <div class="flex items-center mt-4 text-gray-700">
             <FontAwesomeIcon icon={faLocationArrow} />
-            <h1 class="px-2 text-sm">{event ? event.location : ''}</h1>
+            <h1 class="px-2 text-sm">{event ? event.address : ''}</h1>
           </div>
           <div class="flex items-center mt-4 text-gray-700">
             <FontAwesomeIcon icon={faDollarSign} />

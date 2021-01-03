@@ -27,7 +27,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 // import getInitials from 'src/utils/getInitials';
-import getInitials from "../../../../src/utils/getInitials";
+import getInitials from "../../../utils/getInitials";
 import { Link, useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -36,20 +36,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Results = ({ className, events, onReload, ...rest }) => {
+const Results = ({ className, speakers, onReload, ...rest }) => {
   const classes = useStyles();
   let navigate = useNavigate()
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [open, setOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState({})
+  const [selectedSpeaker, setSelectedSpeaker] = useState({})
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = events.map((event) => event._id);
+      newSelectedCustomerIds = speakers.map((event) => event._id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -91,9 +91,9 @@ const Results = ({ className, events, onReload, ...rest }) => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
-let DeleteEvent = (id) => {
+let DeleteSpeaker = (id) => {
   
-    axios.delete('/api/events/' + id)
+    axios.delete('/api/speakers/' + id)
     .then(res => {
       
     })
@@ -106,7 +106,7 @@ let DeleteEvent = (id) => {
 
   const handleClickDelete = (event) => {
     console.log(event);
-    setSelectedEvent(event);
+    setSelectedSpeaker(event);
     setOpen(true);
   };
 
@@ -116,7 +116,7 @@ let DeleteEvent = (id) => {
 
   const handleConfirmDelete = async (e) => {
     e.preventDefault();
-    await DeleteEvent(selectedEvent._id)
+    await DeleteSpeaker(selectedSpeaker._id)
     setOpen(false)
      onReload()
     // console.log(selectedEvent);
@@ -131,36 +131,35 @@ let DeleteEvent = (id) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === events.length}
+                    checked={selectedCustomerIds.length === speakers.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0 &&
-                      selectedCustomerIds.length < events.length
+                      selectedCustomerIds.length < speakers.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Time</TableCell>
-                <TableCell>Location</TableCell>
-                <TableCell>Planned Cost</TableCell>
+                <TableCell>Job</TableCell>
+                <TableCell>Phone Number</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell></TableCell>
                 <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {events.slice(0, limit).map((event) => (
+              {speakers.slice(0, limit).map((speaker) => (
                 <TableRow
                   hover
-                  key={event._id}
-                  selected={selectedCustomerIds.indexOf(event._id) !== -1}
+                  key={speaker._id}
+                  selected={selectedCustomerIds.indexOf(speaker._id) !== -1}
                  
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(event._id) !== -1}
-                      onChange={() => handleSelectOne(event._id)}
+                      checked={selectedCustomerIds.indexOf(speaker._id) !== -1}
+                      onChange={() => handleSelectOne(speaker._id)}
                       value="true"
                     />
                   </TableCell>
@@ -168,28 +167,26 @@ let DeleteEvent = (id) => {
                     <Box alignItems="center" display="flex">
                       <Avatar
                         className={classes.avatar}
-                        src={event.thumbnail}
+                        src={speaker.avatarUrl}
                       >
-                        {getInitials(event.name)}
+                        {getInitials(speaker.name)}
                       </Avatar>
                       <Typography color="textPrimary" variant="body1">
-                        {event.name}
+                        {speaker.name}
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>{event.type}</TableCell>
+                  <TableCell>{speaker.job}</TableCell>
+                 
+                  <TableCell> {speaker.phoneNumber}</TableCell>
                   <TableCell>
-                  {moment(event.startTime).format("DD/MM/YYYY")}
-                  </TableCell>
-                  <TableCell> {event.location}</TableCell>
-                  <TableCell>
-                   {event.plannedCost}
+                   {speaker.email}
                   </TableCell>
                   <TableCell>
                   <FontAwesomeIcon icon={faEdit}/>               
                   </TableCell>
                   <TableCell>
-                   <FontAwesomeIcon onClick={() =>handleClickDelete(event)} icon={faTrash}/>
+                   <FontAwesomeIcon onClick={() =>handleClickDelete(speaker)} icon={faTrash}/>
                   </TableCell>
                 </TableRow>
                 
@@ -201,7 +198,7 @@ let DeleteEvent = (id) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={events.length}
+        count={speakers.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}

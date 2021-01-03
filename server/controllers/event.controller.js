@@ -24,7 +24,7 @@ const get = async (req, res, next) => {
 
     try {
         // execute query with page and limit values
-        const events = await Event.find({},'name type address thumbnail startTime endTime')
+        const events = await Event.find({},'name type location thumbnail startTime endTime ')
           .limit(limit * 1)
           .skip((page - 1) * limit)
           .exec();
@@ -97,7 +97,7 @@ const getEvent = async (req, res, next) => {
 
 const deleteEvent = async (req, res, next) => {
     try {
-        const removeEvent = await Event.remove({
+        const removeEvent = await Event.deleteOne({
             _id: req.params.eventId
         })
         res.json(removeEvent);

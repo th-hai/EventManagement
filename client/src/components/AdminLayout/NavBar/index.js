@@ -37,17 +37,17 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/admin/customers',
+    href: '/dashboard/events',
     icon: UsersIcon,
-    title: 'Event'
+    title: 'Events'
   },
   {
-    href: '/admin/products',
+    href: '/dashboard/speakers',
     icon: ShoppingBagIcon,
     title: 'Speakers'
   },
   {
-    href: '/admin/sponsors',
+    href: '/dashboard/sponsors',
     icon: LockIcon,
     title: 'Sponsors'
   },
