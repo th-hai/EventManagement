@@ -31,7 +31,7 @@ import ResetPassword from "./components/Register/ResetPassword";
 import CreateEvent from "./components/Event/CreateEvent";
 import EventPage from "./components/Event/EventPage";
 import EventDetail from "./components/Event/EventDetail";
-import SpeakersContainer from "./components/Speakers/SpeakerCard";
+import SpeakersContainer from "./components/Speakers/SpeakerContainer";
 import SpeakersPage from "./components/Speakers/SpeakersPage";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
@@ -41,6 +41,8 @@ import CustomerListView from "./views/customer/CustomerListView";
 import SpeakerListView from "./views/speaker/SpeakerListView";
 import CreateSpeaker from "./components/Speakers/CreateSpeaker";
 import UpdateSpeaker from "./components/Speakers/UpdateSpeaker";
+import SponsorsPage from "./components/Sponsors/SponsorsPage";
+import SponsorDetail from "./components/Sponsors/SponsorDetail";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -102,6 +104,8 @@ function App() {
             <Route path="/events/:id" element={<EventDetail/>} />,
             <Route path="/speakers" element={<SpeakersPage/>} />,
             <Route path="/speakers/:id" element={<SpeakerDetail/>} />,
+            <Route path="sponsors" element={<SponsorsPage/>}/>,
+            <Route path="sponsors/:id" element={<SponsorDetail/>}/>,
             <Route path="/about" element={<About/>} />,
             <Route path="/contact" element={<Contact/>}/>
             <Route path="*" element={<PageNotFound/>} />

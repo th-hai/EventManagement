@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import DataProvider from './redux/store'
 import { BrowserRouter } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
   <BrowserRouter>

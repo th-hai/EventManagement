@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SpeakersContainer from "./SpeakerCard";
-import SpeakersBanner from "./SpeakersBanner";
+import SpeakersContainer from "./SpeakerContainer";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 const SpeakersPage = () => {
   const [speakers, setSpeakers] = useState([]);
