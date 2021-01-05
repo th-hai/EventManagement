@@ -126,7 +126,7 @@ const login = async (req, res) => {
     const user = await User.findOne({
       email
     });
-    console.log(email);
+    
     if (!user) return res.status(400).json({
       msg: `${email} is not belong to any account`
     });
@@ -136,7 +136,6 @@ const login = async (req, res) => {
       msg: "The password is incorrect"
     });
 
-    console.log(user);
     const refresh_token = createRefreshToken({
       id: user._id
     });
@@ -144,7 +143,7 @@ const login = async (req, res) => {
     res.cookie('refreshtoken', refresh_token, {
       httpOnly: true,
       path: '/api/users/refresh_token',
-      maxAge: 7 * 24 * 60 * 60 * 1000
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
     res.json({

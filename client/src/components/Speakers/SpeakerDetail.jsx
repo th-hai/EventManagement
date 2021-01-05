@@ -53,7 +53,7 @@ const SpeakerDetail = () => {
                   </div>
                   <div class="relative">
                     <p>
-                      hi
+                      {speaker.bio}
                     </p>
                   </div>
                 </blockquote>

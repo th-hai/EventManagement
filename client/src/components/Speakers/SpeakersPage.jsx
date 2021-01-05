@@ -11,7 +11,6 @@ const SpeakersPage = () => {
       .get("/api/speakers")
       .then((res) => {
         setSpeakers(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);

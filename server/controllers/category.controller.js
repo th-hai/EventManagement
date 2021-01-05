@@ -39,7 +39,7 @@ const create = (req, res) => {
         });
       }
       res.status(200).json({
-        category: data
+        categories: data
       });
     });
   };

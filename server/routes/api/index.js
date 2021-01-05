@@ -34,6 +34,10 @@ router.use('/tickets', ticketRouter);
 
 // category routes
 
-router.use('/category', categoryRouter);
+router.use('/categories', categoryRouter);
+
+// upload Routes
+
+router.use('/upload', uploadRouter);
 
 module.exports = router;

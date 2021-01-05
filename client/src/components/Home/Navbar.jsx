@@ -79,13 +79,13 @@ const Navbar = () => {
                         
                     </a>
                     <a className="fa-layer fa-fw">
-                        <FontAwesomeIcon size="lg" icon={faShoppingCart}  /><span className="py-0 px-4 align-top -ml-3 text-sm font-bold">5</span>
+                        <FontAwesomeIcon size="lg" icon={faShoppingCart}  /><span className="py-0 px-4 align-top -ml-3 text-sm font-bold">0</span>
                         </a>
                    
                     <a class="mr-5 font-medium hover:text-gray-900">
                         {
                             
-                            isLogged ? <Link to="/users/profile">{user.name} </Link> : <Link to="/login">Login</Link>
+                            isLogged ? <Link to="/dashboard">{user.name} </Link> : <Link to="/login">Login</Link>
                         }
                         
                         </a>

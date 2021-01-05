@@ -32,7 +32,6 @@ const create = async (req, res, next) => {
         name: req.body.name,
         job: req.body.job,
         bio: req.body.bio,
-        phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         avatarUrl: req.body.avatarUrl,
         socialNetwork: req.body.socialNetwork
@@ -43,7 +42,7 @@ const create = async (req, res, next) => {
         res.json(savedSpeaker);
     } catch (err) {
         res.json({
-            message: err.message
+            msg: err.message
         })
     }
 }
@@ -86,7 +85,6 @@ const updateSpeaker = async (req, res, next) => {
                 name: req.body.name,
                 job: req.body.job,
                 bio: req.body.bio,
-                phoneNumber: req.body.phoneNumber,
                 email: req.body.email,
                 avatarUrl: req.body.avatarUrl,
                 socialNetwork: req.body.socialNetwork
@@ -96,6 +94,20 @@ const updateSpeaker = async (req, res, next) => {
     } catch (error) {
         res.json({
             message: error
+        })
+    }
+}
+
+// Get a speaker social network
+
+const getSpeakerSocialNetworks = async (req, res, next) => {
+    try {
+        const speaker = await Speaker.findOne({ _id: req.params.speakerId });
+        if (speaker)
+            res.send(speaker);
+      } catch (err) {
+        res.send({
+            message: err.message
         })
     }
 }

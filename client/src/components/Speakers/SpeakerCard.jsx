@@ -25,7 +25,7 @@ function Item(props) {
               <div class="md:w-1/2 absolute bottom-0 pl-8">
                 <p class="font-bold text-2xl uppercase">{speaker.name}</p>               
                 <p class="text-2xl mb-10 leading-none">
-                  Atractive designs for your brand
+                  {speaker.job}
                 </p>
               </div>
           </div>

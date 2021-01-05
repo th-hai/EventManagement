@@ -9,21 +9,14 @@ const SpeakerSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    phoneNumber: {
-        type: String,
-        required: true,
-        unique: true
-    },
     bio: {
-        type: String,
-        required: true
+        type: String
     },
-    socialNetwork: [
-        {
-            name: String,
-            link: String
-        }
-    ],
+    socialNetwork: {
+        facebookUrl: String,
+        twitterUrl: String,
+        instagramUrl: String
+    },
     email: {
         type: String,
         trim: true,
@@ -39,7 +32,7 @@ const SpeakerSchema = mongoose.Schema({
     },
     avatarUrl: {
         type: String,
-        default: "http://placekitten.com/300/300"
+        default: "https://i.pravatar.cc/300"
     }
 });
 

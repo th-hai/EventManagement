@@ -5,4 +5,6 @@ const auth = require('../../middlewares/auth');
 
 router.post('/upload_avatar', uploadImage, auth, uploadCtrl.uploadAvatar)
 
+router.post('/upload_speaker', uploadImage, auth, uploadCtrl.uploadProfilePicture)
+
 module.exports = router;

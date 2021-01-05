@@ -41,7 +41,7 @@ const RecallEvents = () =>
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Speakers"
     >
       <Container maxWidth={false}>
         <Toolbar />

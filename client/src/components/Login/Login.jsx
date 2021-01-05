@@ -65,7 +65,6 @@ const Login = () => {
 
   const responseFacebook = async (response) => {
       try {
-        console.log(response)
           const {accessToken, userID} = response
           const res = await axios.post('/api/users/facebook_login', {accessToken, userID})
 
@@ -99,14 +98,14 @@ const Login = () => {
       </div>
             {err && showErrMsg(err)}
             {success && showSuccessMsg(success)}
-      <div class="px-4 py-2 pt-1 pt-3 mt-1 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
+      <div class="px-4 py-2 pt-2 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
             <FacebookLogin
               appId="1080174515760280"
               autoLoad={false}
               fields="name,email,picture"
               // onClick={componentClicked}
               callback={responseFacebook}
-              cssClass="justify-center w-full px-3 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none text-xl flex justify-start items-center" />
+              cssClass="justify-center w-full px-9 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none text-xl flex justify-start items-center" />
         {/* <button
           class="justify-center w-full px-3 py-2 font-bold text-white bg-blue-700 rounded-md hover:bg-blue-900 focus:outline-none text-xl flex justify-start items-center">
           <FontAwesomeIcon icon={faFacebookSquare} size="lg" className="mr-4"></FontAwesomeIcon>  Login with Facebook

@@ -26,13 +26,13 @@ import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  jobTitle: 'Admin',
+  name: 'Thanh Hai'
 };
 
 const items = [
   {
-    href: '/admin/dashboard',
+    href: '/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
   },

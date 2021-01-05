@@ -45,11 +45,11 @@ const Results = ({ className, speakers, onReload, ...rest }) => {
   const [open, setOpen] = useState(false);
   const [selectedSpeaker, setSelectedSpeaker] = useState({})
 
-  const handleSelectAll = (event) => {
+  const handleSelectAll = (speaker) => {
     let newSelectedCustomerIds;
 
-    if (event.target.checked) {
-      newSelectedCustomerIds = speakers.map((event) => event._id);
+    if (speaker.target.checked) {
+      newSelectedCustomerIds = speakers.map((speaker) => speaker._id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -142,7 +142,7 @@ let DeleteSpeaker = (id) => {
                 </TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Job</TableCell>
-                <TableCell>Phone Number</TableCell>
+                <TableCell>Bio</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell></TableCell>
                 <TableCell></TableCell>
@@ -178,12 +178,14 @@ let DeleteSpeaker = (id) => {
                   </TableCell>
                   <TableCell>{speaker.job}</TableCell>
                  
-                  <TableCell> {speaker.phoneNumber}</TableCell>
+                  <TableCell> {speaker.bio}</TableCell>
                   <TableCell>
                    {speaker.email}
                   </TableCell>
                   <TableCell>
-                  <FontAwesomeIcon icon={faEdit}/>               
+                  <Link to={speaker._id}>
+                  <FontAwesomeIcon icon={faEdit}/>    
+                  </Link>           
                   </TableCell>
                   <TableCell>
                    <FontAwesomeIcon onClick={() =>handleClickDelete(speaker)} icon={faTrash}/>
@@ -214,7 +216,7 @@ let DeleteSpeaker = (id) => {
         <DialogTitle id="alert-dialog-title">Let me know...</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Will you marry me? 
+            Are you sure? 
           </DialogContentText>
         </DialogContent>
         <DialogActions>
