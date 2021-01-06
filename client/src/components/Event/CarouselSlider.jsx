@@ -24,7 +24,7 @@ function Item(props)
                 <div class="md:w-1/2  pl-24">
                     <p class="font-bold text-xl uppercase ">{props.event.type}</p>
                     <p class="text-5xl font-bold">{props.event.name}</p>
-                    <p class="text-3xl mb-10 leading-none">{props.event.description}</p>
+                    <p class="text-3xl mb-10 leading-none">{props.event.location}</p>
                     <a href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Buy ticket now</a>
                 </div>
        

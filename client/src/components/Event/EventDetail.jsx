@@ -28,7 +28,7 @@ const EventDetail = (props) => {
     <div>
         <CarouselSlider event={event} /> 
         <Timeline event={event}/>
-        <FullyDescription/>
+        <FullyDescription event={event}/>
         <PricingPanel event={event}/>
     </div>
   );

@@ -28,7 +28,7 @@ import {
 } from "@material-ui/core";
 // import getInitials from 'src/utils/getInitials';
 import getInitials from "../../../../src/utils/getInitials";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: {
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Results = ({ className, events, onReload, ...rest }) => {
   const classes = useStyles();
-  let navigate = useNavigate()
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -186,7 +185,9 @@ let DeleteEvent = (id) => {
                    {event.plannedCost}
                   </TableCell>
                   <TableCell>
-                  <FontAwesomeIcon icon={faEdit}/>               
+                  <Link to={event._id}>
+                  <FontAwesomeIcon icon={faEdit}/>    
+                  </Link>                    
                   </TableCell>
                   <TableCell>
                    <FontAwesomeIcon onClick={() =>handleClickDelete(event)} icon={faTrash}/>
@@ -217,7 +218,7 @@ let DeleteEvent = (id) => {
         <DialogTitle id="alert-dialog-title">Let me know...</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Will you marry me? 
+            Are you sure? 
           </DialogContentText>
         </DialogContent>
         <DialogActions>

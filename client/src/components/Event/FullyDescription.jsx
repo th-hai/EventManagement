@@ -1,5 +1,7 @@
 import React from "react";
-const FullyDescription = () => {
+const FullyDescription = (props) => {
+  const { event } = props;
+
   return (
     // <!-- component -->
     <div class=" mx-auto w-1/2 bg-white rounded">
@@ -10,34 +12,7 @@ const FullyDescription = () => {
           </div>
           <div class="p-2 w-full h-full overflow-y-auto text-black p-10">
             <p class="text-justify py-2">
-              HotSymbol is a simple and easy online tool to copy{" "}
-              <a
-                class="text-blue-300 hover:text-gray-400"
-                href="https://www.hotsymbol.com/symbols"
-                title="copy symbol"
-              >
-                symbol
-              </a>
-              , text{" "}
-              <a
-                class="text-blue-300 hover:text-gray-400"
-                href="https://www.hotsymbol.com/emojis"
-                title="copy emoji"
-              >
-                emoji
-              </a>{" "}
-              characters, and signs to Facebook posts, Instagram bio, blog
-              posts, WhatsApp, Snapchat chat and comments, nicknames in games,
-              or wherever else - these symbols work just about everywhere.
-            </p>
-            <p class="text-justify py-2">
-              We are growing this website timely. and adding more stunning
-              features to make the web and mobile easy keeping care of the whole
-              range of audiences. when we build the HotSymbol website we take
-              care of many tiny details such as website User experience, Website
-              performance, speed, design, etc. This is the reason you will find
-              the HotSymbol website faster and feature reach than any other
-              website available on the internet.
+             {event.description ? event.description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
             </p>
           </div>
         </div>

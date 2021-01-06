@@ -47,13 +47,23 @@ const UpdateEvent = () => {
   let { id } = useParams();
 
   useEffect(() => {
+    axios.get('/api/events/' + id)
+    .then((res) => {
+      setEvent(res.data);
+      console.log(res.data)
+    })
+    .catch((error) => {
+      return setEvent({...event, err: error.message , success: ''})
+    });
+  }, [])
+
+  useEffect(() => {
     axios.get('/api/categories')
     .then(res => {
       setCategories(res.data.categories.map(category => ({value: category._id, label: category.name})));
-      
     })
     .catch(error => {
-      console.log(error)
+      return setEvent({...event, err: error.message , success: ''})
     })
   }, [])
 
@@ -61,7 +71,6 @@ const UpdateEvent = () => {
     axios.get('/api/tickets')
     .then(res => {
       setTickets(res.data.tickets.map(ticket => ({value: ticket._id, label: ticket.name})));
-      // console.log(res.data)
     })
     .catch(error => {
       console.log(error)
@@ -198,11 +207,11 @@ const UpdateEvent = () => {
 
     try {
       const newEvent = event
-        axios.post('/api/events/create', newEvent,{
+        axios.patch(`/api/events/${id}`, newEvent,{
             headers: {Authorization: token}
         })
         
-        setEvent({...event, err: '' , success: "Add Speaker Successffully!"})
+        setEvent({...event, err: '' , success: "Update Event Successffully!"})
         // navigate('/speakers')
     } catch (err) {
         setEvent({...event, err: err.response.data.msg , success: ''})
@@ -215,7 +224,7 @@ const UpdateEvent = () => {
   <div className="md:grid md:grid-cols-3 md:gap-6">
     <div className="md:col-span-1">
       <div className="px-4 sm:px-0">
-        <h3 className="text-lg m-5 font-medium leading-6 text-gray-900">Create An Event</h3>
+        <h3 className="text-lg m-5 font-medium leading-6 text-gray-900">Update An Event</h3>
       </div>
       {err && showErrMsg(err)}
       {success && showSuccessMsg(success)}
@@ -227,7 +236,7 @@ const UpdateEvent = () => {
           <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div className="col-span-6 sm:col-span-4">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-              <input type="text" name="name" id="name" onChange={handleChangeInput} defaultValue={(event && event.name) ? name : ''} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input type="text" name="name" id="name" onChange={handleChangeInput} defaultValue={event ? name : ''} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type</label>
@@ -236,43 +245,43 @@ const UpdateEvent = () => {
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="categories" className="block mb-1 text-sm font-medium text-gray-700">Categories</label>
-                <Selector id="categories" name="categories" onChange={handleChangeCategories} isMulti options={categoriesList} defaultValue={(event && event.categories) ? categories : ''} />
+                <Selector id="categories" name="categories" onChange={handleChangeCategories} isMulti options={categoriesList} defaultValue={categories ? categories : []} />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="tickets" className="block text-sm font-medium text-gray-700">Tickets</label>
-                <Selector id="tickets" name="tickets" onChange={handleChangeTickets} isMulti options={ticketsList} />
+                <Selector id="tickets" name="tickets" onChange={handleChangeTickets} isMulti options={ticketsList} defaultValue={tickets ? tickets : []} />
               </div>
             </div>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="sponsors" className="block text-sm font-medium text-gray-700">Sponsors</label>
-                <Selector id="sponsors" name="sponsors" onChange={handleChangeSponsors}  isMulti options={sponsorsList} />
+                <Selector id="sponsors" name="sponsors" onChange={handleChangeSponsors}  isMulti options={sponsorsList} defaultValue={sponsors ? sponsors : []} />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="speakers" className="block text-sm font-medium text-gray-700">Speakers</label>
-                <Selector id="speakers" name="speakers" onChange={handleChangeSpeakers}  isMulti options={speakersList} />
+                <Selector id="speakers" name="speakers" onChange={handleChangeSpeakers}  isMulti options={speakersList} defaultValue={speakers ? speakers : []} />
               </div>
             </div>
             <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="state" className="block text-sm font-medium text-gray-700">Start Time</label>
-                  <DatePicker selected={startTime} onChange={date => setEvent({...event, startTime: date})} timeInputLabel="Time:" showTimeInput dateFormat="Pp" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+                  <DatePicker selected={startTime ? new Date(startTime) : null} onChange={date => setEvent({...event, startTime: date})} timeInputLabel="Time:" showTimeInput dateFormat="Pp" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="postal_code" className="block text-sm font-medium text-gray-700">End Time</label>
-                  <DatePicker selected={endTime} onChange={date => setEvent({...event, endTime: date})} timeInputLabel="Time:" showTimeInput dateFormat="Pp" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+                  <DatePicker selected={endTime ? new Date(endTime) : null} onChange={date => setEvent({...event, endTime: date})} timeInputLabel="Time:" showTimeInput dateFormat="Pp" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                 </div>
               </div>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6">
                 <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
-                <input type="text" name="address" id="address" onChange={handleChangeInput} autoComplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                <input type="text" name="address" id="address" onChange={handleChangeInput} defaultValue={address ? address : ''} autoComplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
               </div>
             </div>
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
-                  <input type="text" name="location" id="location" onChange={handleChangeInput} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                  <input type="text" name="location" id="location" onChange={handleChangeInput} defaultValue={location ? location : ''} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="company_website" className="block text-sm font-medium text-gray-700">
@@ -282,18 +291,18 @@ const UpdateEvent = () => {
                     <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                       CODE
                     </span>
-                    <input type="text" name="dressCode" id="dressCode" onChange={handleChangeInput} className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="White" />
+                    <input type="text" name="dressCode" id="dressCode" onChange={handleChangeInput} defaultValue={dressCode ? dressCode : null} className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="White" />
                   </div>
                 </div>
               </div>
             <div className="grid grid-cols-6 gap-6">  
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="plannedCost" className="block text-sm font-medium text-gray-700">Planned Cost</label>
-                <input type="number" min="0" name="plannedCost" id="plannedCost" onChange={handleChangeInput} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                <input type="number" min="0" name="plannedCost" id="plannedCost" onChange={handleChangeInput} value={plannedCost ? plannedCost : 0} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="actualCost" className="block text-sm font-medium text-gray-700">Actual Cost</label>
-                <input type="number" min="0" name="actualCost" id="actualCost" onChange={handleChangeInput}  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                <input type="number" min="0" name="actualCost" id="actualCost" onChange={handleChangeInput} value={actualCost ? actualCost : 0}  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
               </div>
             </div>
             <div>
@@ -301,7 +310,7 @@ const UpdateEvent = () => {
                 Description
               </label>
               <div className="mt-1">
-                <textarea id="description" name="description" rows={3} onChange={handleChangeInput} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Event Detail..." defaultValue={""} />
+                <textarea id="description" name="description" rows={3} onChange={handleChangeInput}  defaultValue={ description ? description : ''} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Event Detail..."/> 
               </div>
               <p className="mt-2 text-sm text-gray-500">
                 Brief description for your event. URLs are hyperlinked.
@@ -312,7 +321,7 @@ const UpdateEvent = () => {
                 Photos
               </label>
               <div className="mt-2 flex items-center">
-                <input type="file" multiple="multiple" onChange={handleImageUpload} className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-50"/>
+                <input type="file" multiple="multiple" onChange={handleImageUpload} defaultValue={imageUrl ? imageUrl : []} className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-50"/>
               </div>
             </div>
             <div>
@@ -326,7 +335,7 @@ const UpdateEvent = () => {
                   <div className="flex text-sm text-gray-600">
                     <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                       <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" onChange={changeThumbnail} className="sr-only" />
+                      <input id="file-upload" name="file-upload" type="file" onChange={changeThumbnail} defaultValue={thumbnail ? thumbnail : null} className="sr-only" />
                     </label>
                     <p className="pl-1">or drag and drop</p>
                   </div>

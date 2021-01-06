@@ -40,6 +40,6 @@ router.delete('/:eventId', eventController.deleteEvent);
 
 // Update an event 
 
-router.patch('/:eventId', eventController.updateEvent);
+router.patch('/:id', eventController.updateEvent);
 
 module.exports = router;

@@ -117,6 +117,7 @@ function App() {
             <Route path="/" element={<DashboardLayout/>} />,
             <Route path="/events" element={<CustomerListView/>}/>
             <Route path="/events/create" element={<CreateEvent/>}/>
+            <Route path="/events/:id" element={<UpdateEvent/>}/>
             <Route path="/speakers" element={<SpeakerListView/>}/>
             <Route path="/speakers/create" element={<CreateSpeaker/>}/>,
             <Route path="/speakers/:id" element={<UpdateSpeaker/>}/>,

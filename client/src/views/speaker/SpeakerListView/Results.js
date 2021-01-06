@@ -28,7 +28,7 @@ import {
 } from "@material-ui/core";
 // import getInitials from 'src/utils/getInitials';
 import getInitials from "../../../utils/getInitials";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: {
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Results = ({ className, speakers, onReload, ...rest }) => {
   const classes = useStyles();
-  let navigate = useNavigate()
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);

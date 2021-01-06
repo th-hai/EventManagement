@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from "axios";
 import Selector from 'react-select'
 import DatePicker from "react-datepicker";
+import {useNavigate} from 'react-router-dom'
 import "react-datepicker/dist/react-datepicker.css";
 import {showErrMsg, showSuccessMsg} from '../utils/Notification'
 import validator from 'validator';
@@ -42,6 +43,7 @@ const CreateEvent = () => {
 
   const { name, type, categories, tickets, dressCode, speakers, sponsors, address, location, startTime, endTime, plannedCost, actualCost, description, imageUrl, thumbnail, success, err} = event;
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('/api/categories')
@@ -199,7 +201,7 @@ const CreateEvent = () => {
             headers: {Authorization: token}
         })
         
-        setEvent({...event, err: '' , success: "Add Speaker Successffully!"})
+        setEvent({...event, err: '' , success: "Add Event Successfully!"})
         navigate('/dashboard/events')
     } catch (err) {
         setEvent({...event, err: err.response.data.msg , success: ''})

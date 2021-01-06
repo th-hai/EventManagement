@@ -2,6 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 const SearchBar = () => {
+
+  
   return (
     // <div className="w-screen flex justify-center">
     //     <div class=" bg-gray-200 rounded flex items-center w-1/3  p-3 ">
