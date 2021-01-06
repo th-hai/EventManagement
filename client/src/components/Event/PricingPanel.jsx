@@ -121,12 +121,12 @@ const PricingPanel = (props) => {
               </div>
               <div class="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
                 <h1 class="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide">
-                {tickets && tickets.length > 0 && tickets[1].ticketType}
+                {tickets && tickets.length > 1 && tickets[1].ticketType}
                 </h1>
                 <h2 class="text-sm text-gray-500 text-center pb-6">
                   <span class="text-3xl">${tickets && tickets.length > 0 && tickets[1].price}</span> 
                 </h2>
-                {tickets && tickets.length > 0 && tickets[1].ticketDetail}
+                {tickets && tickets.length > 1 && tickets[1].ticketDetail}
               </div>
               <div class="flex pl-12 justify-start sm:justify-start mt-3">
                 <ul>
@@ -200,12 +200,12 @@ const PricingPanel = (props) => {
               <div class="bg-white text-black rounded-lg shadow-inner shadow-lg overflow-hidden">
                 <div class="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
                   <h1 class="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide">
-                  {tickets && tickets.length > 0 && tickets[2].ticketType}
+                  {tickets && tickets.length > 2 && tickets[2].ticketType}
                   </h1>
                   <h2 class="text-2xl text-gray-500 text-center pb-6">
-                  ${tickets && tickets.length > 0 && tickets[2].price}
+                  ${tickets && tickets.length > 2 && tickets[2].price}
                   </h2>
-                  {tickets && tickets.length > 0 && tickets[2].ticketDetail}
+                  {tickets && tickets.length > 2 && tickets[2].ticketDetail}
                 </div>
                 <div class="flex flex-wrap mt-3 px-6">
                   <ul>

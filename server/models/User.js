@@ -31,12 +31,6 @@ const UserSchema = new mongoose.Schema({
         default: 0,
         enum: [1, 0]
     },
-    resetPasswordToken: {
-        type: String
-    },
-    resetPasswordExpires: {
-        type: Date
-    },
     avatarUrl: {
         type: String,
         default: 'http://placekitten.com/300/300'

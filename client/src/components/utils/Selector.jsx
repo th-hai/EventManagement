@@ -23,7 +23,7 @@ const Selector = () => {
       isMulti
         // value={selectedOption}
         // onChange={this.handleChange}
-        options={options}
+       
       />
     );
 }

@@ -41,6 +41,7 @@ import CustomerListView from "./views/customer/CustomerListView";
 import SpeakerListView from "./views/speaker/SpeakerListView";
 import CreateSpeaker from "./components/Speakers/CreateSpeaker";
 import UpdateSpeaker from "./components/Speakers/UpdateSpeaker";
+import UpdateEvent from "./components/Event/UpdateEvent";
 import SponsorsPage from "./components/Sponsors/SponsorsPage";
 import SponsorDetail from "./components/Sponsors/SponsorDetail";
 import SponsorListView from "./views/sponsor/SponsorListView";
@@ -114,9 +115,9 @@ function App() {
           <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <PageNotFound/>}> 
           {/* auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/> */}
             <Route path="/" element={<DashboardLayout/>} />,
-            <Route path="/events" element={<CustomerListView/>}/>,
-            <Route path="/events/create" element={<CreateEvent/>}/>,
-            <Route path="/speakers" element={<SpeakerListView/>}/>,
+            <Route path="/events" element={<CustomerListView/>}/>
+            <Route path="/events/create" element={<CreateEvent/>}/>
+            <Route path="/speakers" element={<SpeakerListView/>}/>
             <Route path="/speakers/create" element={<CreateSpeaker/>}/>,
             <Route path="/speakers/:id" element={<UpdateSpeaker/>}/>,
             <Route path="/sponsors" element={<SponsorListView/>}/>

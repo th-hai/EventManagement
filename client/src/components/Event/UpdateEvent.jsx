@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import axios from "axios";
 import Selector from 'react-select'
 import DatePicker from "react-datepicker";
@@ -29,7 +30,7 @@ const initialState = {
   err: ''
 }
 
-const CreateEvent = () => {
+const UpdateEvent = () => {
   
   // Get categories
   const [event, setEvent] = useState(initialState)
@@ -42,6 +43,8 @@ const CreateEvent = () => {
 
   const { name, type, categories, tickets, dressCode, speakers, sponsors, address, location, startTime, endTime, plannedCost, actualCost, description, imageUrl, thumbnail, success, err} = event;
 
+  const navigate = useNavigate()
+  let { id } = useParams();
 
   useEffect(() => {
     axios.get('/api/categories')
@@ -200,7 +203,7 @@ const CreateEvent = () => {
         })
         
         setEvent({...event, err: '' , success: "Add Speaker Successffully!"})
-        navigate('/dashboard/events')
+        // navigate('/speakers')
     } catch (err) {
         setEvent({...event, err: err.response.data.msg , success: ''})
     }
@@ -224,16 +227,16 @@ const CreateEvent = () => {
           <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div className="col-span-6 sm:col-span-4">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-              <input type="text" name="name" id="name" onChange={handleChangeInput} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input type="text" name="name" id="name" onChange={handleChangeInput} defaultValue={(event && event.name) ? name : ''} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type</label>
-              <input type="text" name="type" id="type" onChange={handleChangeInput} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input type="text" name="type" id="type" onChange={handleChangeInput} defaultValue={(event && event.type) ? type : ''} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
             </div>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="categories" className="block mb-1 text-sm font-medium text-gray-700">Categories</label>
-                <Selector id="categories" name="categories" onChange={handleChangeCategories} isMulti options={categoriesList} />
+                <Selector id="categories" name="categories" onChange={handleChangeCategories} isMulti options={categoriesList} defaultValue={(event && event.categories) ? categories : ''} />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="tickets" className="block text-sm font-medium text-gray-700">Tickets</label>
@@ -347,4 +350,4 @@ const CreateEvent = () => {
 
   );
 };
-export default CreateEvent;
+export default UpdateEvent;

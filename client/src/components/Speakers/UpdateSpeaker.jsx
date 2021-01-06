@@ -20,10 +20,8 @@ const initialState = {
   
   const UpdateSpeaker = () => {
     const [data, setData] = useState(initialState)
-    // const [speaker, setSpeaker] = useState(initialState);
     const [avatar, setAvatar] = useState('');
     const [loading, setLoading] = useState(false);
-    const [callback, setCallback] = useState(false);
     const auth = useSelector(state => state.auth);
     const token = useSelector(state => state.token);
 
@@ -74,14 +72,10 @@ const initialState = {
     const handleChangeInput = async e => {
         const {name, value} = e.target
         setData({...data, [name]:value, err: '', success: ''})
-        console.log(data);
     }
 
     const handleSubmit = async e => {
       e.preventDefault()  
-      
-      // console.log(newSpeaker)
-
       
       if(validator.isEmpty(name) || validator.isEmpty(job) || validator.isEmpty(email) ) {
         return setData({...data, err: "You must fill all required field (name, job, email)" , success: ''})
@@ -90,10 +84,6 @@ const initialState = {
       if(!(validator.isEmail(email))) {
         return setData({...data, err: "Email address is not valid" , success: ''})
       }
-
-    //   if(!(validator.isURL(avatar))) {
-    //     return setData({...data, err: "The avatar URL is not valid" , success: ''})
-    //   }
 
       try {
         const newData = {
@@ -113,7 +103,7 @@ const initialState = {
           })
           
           setData({...data, err: '' , success: "Update Speaker Successffully!"})
-        //   navigate('/dashboard/speakers')
+          navigate('/dashboard/speakers')
       } catch (err) {
           setData({...data, err: err.response.data.msg , success: ''})
       }

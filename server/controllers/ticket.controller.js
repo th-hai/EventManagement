@@ -46,7 +46,7 @@ const create = (req, res) => {
         });
       }
       res.status(200).json({
-        ticket: data
+        tickets: data
       });
     });
   };

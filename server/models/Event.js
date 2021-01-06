@@ -12,8 +12,7 @@ const EventSchema = mongoose.Schema({
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     startTime: {
         type: Date,
@@ -33,8 +32,7 @@ const EventSchema = mongoose.Schema({
     }],
     thumbnail: String,
     imageUrl: {
-        type: Array,
-        default: ['https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30']
+        type: Array
     },
     location: {
         type: String,
@@ -46,12 +44,10 @@ const EventSchema = mongoose.Schema({
     },
     speakers: [{
         type: Schema.Types.ObjectId,
-        required: true,
         ref: 'Speakers'
     }],
     tickets: [{
         type: Schema.Types.ObjectId,
-        required: true,
         ref: 'Tickets'
     }],
     dressCode: String,

@@ -56,17 +56,11 @@ const CreateSpeaker = () => {
         setData({...data, err: err.message, success: ''})
       }
     } 
-    
-    // Create speaker
-
-    const createSpeaker = async () => {
-      
-  }
 
     const handleChangeInput = async e => {
         const {name, value} = e.target
         setData({...data, [name]:value, err: '', success: ''})
-        console.log(data);
+        // console.log(data);
     }
 
     const handleSubmit = async e => {
