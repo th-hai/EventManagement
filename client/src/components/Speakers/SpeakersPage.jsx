@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SpeakersContainer from "./SpeakerCard";
-import SpeakersBanner from "./SpeakersBanner";
+import SpeakersContainer from "./SpeakerContainer";
 import { Link, animateScroll as scroll, Element } from "react-scroll";
 const SpeakersPage = () => {
   const [speakers, setSpeakers] = useState([]);
@@ -27,13 +26,13 @@ const SpeakersPage = () => {
         >
           <div class="relative flex flex-col items-center w-full max-w-6xl px-4 py-8 mx-auto text-center rounded-lg shadow-2xl lg:text-left lg:block bg-gradient-to-br from-purple-600 via-indigo-500 to-teal-400 sm:px-6 md:pb-0 md:pt-12 lg:px-12 lg:py-12 ">
             <h2 class="my-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:my-0 xl:text-4xl sm:leading-tight">
-              Infastructure that is{" "}
+              We bring the best speakers{" "}
               <span class="block text-indigo-200 xl:inline">
-                out of this world
+                for you
               </span>
             </h2>
             <p class="mt-1 mb-10 text-sm font-medium text-indigo-200 uppercase xl:text-base xl:tracking-wider lg:mb-0">
-              Pushing the envelope for being awesome!
+            The way to get started is to quit talking and begin doing
             </p>
             <div class="flex mb-8 lg:mt-6 lg:mb-0">
               <div class="inline-flex">

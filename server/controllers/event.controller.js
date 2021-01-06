@@ -24,7 +24,7 @@ const get = async (req, res, next) => {
 
     try {
         // execute query with page and limit values
-        const events = await Event.find({},'name type location thumbnail startTime endTime ')
+        const events = await Event.find({},'name type address location thumbnail startTime endTime ')
           .limit(limit * 1)
           .skip((page - 1) * limit)
           .exec();

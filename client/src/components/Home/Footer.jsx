@@ -25,7 +25,7 @@ const Footer = () => {
                 />
               </svg>
             </a>
-            <p class="mt-2 text-sm text-gray-500">Design, Code and Ship!</p>
+            <p class="mt-2 text-sm text-gray-500">Remembered always</p>
           </div>
           <div class="flex flex-wrap flex-grow text-center lg:-mb-10 md:mt-0">
             <div class="w-full px-4 mt-4 lg:w-1/4 md:w-1/4">

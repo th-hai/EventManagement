@@ -7,8 +7,8 @@ import Ticket from "./Ticket";
 import Speakers from "./Features";
 
 import CarouselSlider from "../Event/CarouselSlider";
-import SpeakerCard from "../Speakers/SpeakerCard";
-import SpeakersContainer from "../Speakers/SpeakerCard";
+import SpeakerCard from "../Speakers/SpeakerContainer";
+import SpeakersContainer from "../Speakers/SpeakerContainer";
 import Quote from "./Quote";
 import Banner from "./Banner";
 function Home() {

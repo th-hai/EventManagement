@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 import clsx from 'clsx';
 import {
   Box,
@@ -35,13 +36,15 @@ const Toolbar = ({ className, ...rest }) => {
         display="flex"
         justifyContent="flex-end"
       >
-        
-        <Button
+       
+        <Link to="create" >
+        <Button 
           color="primary"
           variant="contained"
         >
-          Add event
+          Add Sponsor
         </Button>
+        </Link>
       </Box>
       <Box mt={3}>
         <Card>
@@ -61,7 +64,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search customer"
+                placeholder="Search sponsor"
                 variant="outlined"
               />
             </Box>

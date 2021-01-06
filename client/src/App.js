@@ -31,7 +31,7 @@ import ResetPassword from "./components/Register/ResetPassword";
 import CreateEvent from "./components/Event/CreateEvent";
 import EventPage from "./components/Event/EventPage";
 import EventDetail from "./components/Event/EventDetail";
-import SpeakersContainer from "./components/Speakers/SpeakerCard";
+import SpeakersContainer from "./components/Speakers/SpeakerContainer";
 import SpeakersPage from "./components/Speakers/SpeakersPage";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
@@ -41,6 +41,9 @@ import CustomerListView from "./views/customer/CustomerListView";
 import SpeakerListView from "./views/speaker/SpeakerListView";
 import CreateSpeaker from "./components/Speakers/CreateSpeaker";
 import UpdateSpeaker from "./components/Speakers/UpdateSpeaker";
+import SponsorsPage from "./components/Sponsors/SponsorsPage";
+import SponsorDetail from "./components/Sponsors/SponsorDetail";
+import SponsorListView from "./views/sponsor/SponsorListView";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -102,6 +105,8 @@ function App() {
             <Route path="/events/:id" element={<EventDetail/>} />,
             <Route path="/speakers" element={<SpeakersPage/>} />,
             <Route path="/speakers/:id" element={<SpeakerDetail/>} />,
+            <Route path="sponsors" element={<SponsorsPage/>}/>,
+            <Route path="sponsors/:id" element={<SponsorDetail/>}/>,
             <Route path="/about" element={<About/>} />,
             <Route path="/contact" element={<Contact/>}/>
             <Route path="*" element={<PageNotFound/>} />
@@ -109,11 +114,12 @@ function App() {
           <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <PageNotFound/>}> 
           {/* auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/> */}
             <Route path="/" element={<DashboardLayout/>} />,
-            <Route path="/events" element={<CustomerListView/>}/>
-            <Route path="/events/create" element={<CreateEvent/>}/>
-            <Route path="/speakers" element={<SpeakerListView/>}/>
+            <Route path="/events" element={<CustomerListView/>}/>,
+            <Route path="/events/create" element={<CreateEvent/>}/>,
+            <Route path="/speakers" element={<SpeakerListView/>}/>,
             <Route path="/speakers/create" element={<CreateSpeaker/>}/>,
             <Route path="/speakers/:id" element={<UpdateSpeaker/>}/>,
+            <Route path="/sponsors" element={<SponsorListView/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

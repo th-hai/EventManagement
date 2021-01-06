@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SpeakerListView = () => {
+const SponsorListView = () => {
   const classes = useStyles();
 
-  const [speakers, setSpeakers] = useState([]);
+  const [sponsors, setSponsors] = useState([]);
 
   useEffect(() => {
     RecallEvents()
@@ -30,10 +30,9 @@ const SpeakerListView = () => {
 
 const RecallEvents = () =>
 {
-  axios.get('/api/speakers/all')
+  axios.get('/api/sponsors/all')
   .then(res => {
-    setSpeakers(res.data.speakers);
-  
+    setSponsors(res.data.sponsors);
   })
   .catch(error => {
     console.log(error)
@@ -42,16 +41,16 @@ const RecallEvents = () =>
   return (
     <Page
       className={classes.root}
-      title="Speakers"
+      title="Sponsors"
     >
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results speakers={speakers} onReload={RecallEvents} />
+          <Results sponsors={sponsors} onReload={RecallEvents} />
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default SpeakerListView;
+export default SponsorListView;
