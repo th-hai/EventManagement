@@ -35,22 +35,7 @@ const SponsorDetail = () => {
                 class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center pr-48">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{sponsor.name}</h1>
                 <p class="mb-8 text-xl leading-relaxed">{sponsor.description}</p>
-                <div class="flex lg:flex-row md:flex-col">
-                <a
-                    class="mx-2 text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <FontAwesomeIcon icon={faFacebookF} size="2x"></FontAwesomeIcon>
-                </a>
-                <a
-                    class="mx-2 text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <FontAwesomeIcon icon={faInstagram} size="2x"></FontAwesomeIcon>
-                </a>
-                <a
-                    class="mx-2 text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <FontAwesomeIcon icon={faYoutube} size="2x"></FontAwesomeIcon>
-                </a>
                
-
-            </div>
                 
                
             </div>

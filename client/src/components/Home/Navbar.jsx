@@ -70,7 +70,7 @@ const Navbar = () => {
                     <a class="mr-5 font-medium hover:text-gray-900"><Link to="/">Home</Link></a>
                     <a class="mr-5 font-medium hover:text-gray-900"><Link to="/events">Events</Link></a>
                     <a class="mr-5 font-medium hover:text-gray-900"><Link to="/speakers">Speakers</Link></a>
-                    <a class="mr-5 font-medium hover:text-gray-900"><Link to="/sponsors">Sponsor</Link></a>
+                    <a class="mr-5 font-medium hover:text-gray-900"><Link to="/sponsors">Sponsors</Link></a>
                     <a class="mr-5 font-medium hover:text-gray-900"><Link to="/about">About</Link></a>
                     <a class="font-medium hover:text-gray-900"><Link to="/contact">Contact</Link></a>             
                 </nav>

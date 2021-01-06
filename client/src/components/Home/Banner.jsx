@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faGamepad, faMobile } from "@fortawesome/free-solid-svg-icons";
+import { faPeopleArrows, faGamepad, faFutbol } from "@fortawesome/free-solid-svg-icons";
 const Banner = () => {
   return (
     // <!-- component -->
@@ -13,17 +13,17 @@ const Banner = () => {
         }}
       ></div>
 
-      <div class="-mt-64 ">
-        <div class="w-full text-center">
-          <p class="text-sm tracking-widest text-white">Subtitle</p>
-          <h1 class="font-bold text-5xl text-white">Title</h1>
+      <div class="-mt-32 ">
+        <div class="w-full text-center -mt-24">
+          <p class="text-sm tracking-widest text-white">Life’s a party</p>
+          <h1 class="font-bold text-5xl text-white">TAILS</h1>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 ml-24">
           <div class="p-2 sm:p-10 text-center cursor-pointer">
-            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg hover:bg-white transition duration-500  bg-white">
+            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg  transition duration-500  bg-transparent">
               <div class="space-y-10">
-                <FontAwesomeIcon icon={faBook} size="5x" color="tomato" />
+                <FontAwesomeIcon icon={faPeopleArrows} size="5x" color="tomato" />
 
                 <div class="px-6 py-4">
                   <div class="space-y-5">
@@ -31,7 +31,7 @@ const Banner = () => {
                       Great People
                     </div>
                     <p class="text-gray-700 text-base">
-                      Todo tipo de masajes y técnicas
+                      Meet great people around the world
                     </p>
                   </div>
                 </div>
@@ -40,7 +40,7 @@ const Banner = () => {
           </div>
 
           <div class="p-2 sm:p-10 text-center cursor-pointer">
-            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg hover:bg-white transition duration-500  bg-white">
+            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg transition duration-500  bg-transparent">
               <div class="space-y-10">
                 <FontAwesomeIcon icon={faGamepad} size="5x" color="tomato" />
 
@@ -50,7 +50,7 @@ const Banner = () => {
                       Have fun
                     </div>
                     <p class="text-gray-700 text-base">
-                      Todo tipo de masajes y técnicas
+                      Enjoy the party
                     </p>
                   </div>
                 </div>
@@ -59,16 +59,16 @@ const Banner = () => {
           </div>
 
           <div class="p-2 sm:p-10 text-center cursor-pointer translate-x-2">
-            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg hover:bg-white transition duration-500 bg-white ">
+            <div class="py-16 max-w-sm rounded overflow-hidden shadow-lg transition duration-500 bg-transparent ">
               <div class="space-y-10">
-                <FontAwesomeIcon icon={faMobile} size="5x" color="tomato" />
+                <FontAwesomeIcon icon={faFutbol} size="5x" color="tomato" />
 
                 <div class="px-6 py-4">
                   <div class="space-y-5">
                     <div class="font-bold text-4xl uppercase mb-2">
-                      New people
+                      Awesome Events
                     </div>
-                    <p class="text-gray-700 text-base">Piscina temperada</p>
+                    <p class="text-gray-700 text-base">All you need is here</p>
                   </div>
                 </div>
               </div>

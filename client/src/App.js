@@ -43,6 +43,7 @@ import CreateSpeaker from "./components/Speakers/CreateSpeaker";
 import UpdateSpeaker from "./components/Speakers/UpdateSpeaker";
 import SponsorsPage from "./components/Sponsors/SponsorsPage";
 import SponsorDetail from "./components/Sponsors/SponsorDetail";
+import SponsorListView from "./views/sponsor/SponsorListView";
 
 
 // import DashboardLayout from "./components/AdminLayout";
@@ -113,11 +114,12 @@ function App() {
           <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <PageNotFound/>}> 
           {/* auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/> */}
             <Route path="/" element={<DashboardLayout/>} />,
-            <Route path="/events" element={<CustomerListView/>}/>
-            <Route path="/events/create" element={<CreateEvent/>}/>
-            <Route path="/speakers" element={<SpeakerListView/>}/>
+            <Route path="/events" element={<CustomerListView/>}/>,
+            <Route path="/events/create" element={<CreateEvent/>}/>,
+            <Route path="/speakers" element={<SpeakerListView/>}/>,
             <Route path="/speakers/create" element={<CreateSpeaker/>}/>,
             <Route path="/speakers/:id" element={<UpdateSpeaker/>}/>,
+            <Route path="/sponsors" element={<SponsorListView/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

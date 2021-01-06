@@ -98,7 +98,7 @@ const Login = () => {
       </div>
             {err && showErrMsg(err)}
             {success && showSuccessMsg(success)}
-      <div class="px-4 py-2 pt-2 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
+      <div class="mb-4">
             <FacebookLogin
               appId="1080174515760280"
               autoLoad={false}
@@ -111,7 +111,7 @@ const Login = () => {
           <FontAwesomeIcon icon={faFacebookSquare} size="lg" className="mr-4"></FontAwesomeIcon>  Login with Facebook
         </button> */}
       </div>
-      <div class="px-4 py-2 pt-1 text-xs  sm:px-6 sm:flex sm:flex-row-reverse">
+      <div class="">
         {/* <div
           class="justify-center w-full px-3 py-2 font-bold text-white bg-red-500 rounded-md hover:bg-red-700 focus:outline-none text-xl flex items-center ">
           <FontAwesomeIcon icon={faGoogle} size="lg" className="mr-3 -ml-6"></FontAwesomeIcon> Login with Google
