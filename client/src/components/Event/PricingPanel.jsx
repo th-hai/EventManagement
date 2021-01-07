@@ -6,7 +6,6 @@ const PricingPanel = (props) => {
   let { id } = useParams();
 
   let [tickets, setTickets] = useState([]);
-  console.log(id);
   useEffect(() => {
     axios
       .get("/api/events/" + id + "/tickets")

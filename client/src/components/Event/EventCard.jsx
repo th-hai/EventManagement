@@ -11,17 +11,17 @@ const EventCard = (props) => {
   const [event, setEvent] = useState(props.event)
   const date = new Date(event.startTime)
   return (
-    <a href={"events/" + event._id}>
+    <a class="lg:col-span-1 md:col-span-3	sm:col-span-3" href={"events/" + event._id}>
       <div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4">
         <img
-          class="w-full h-56 object-cover object-center"
+          class="w-full max-h-56 object-cover object-center"
           src={event && event.thumbnail ? event.thumbnail : 'https://via.placeholder.com/150/FFFFFF/FFFFFF'}
           alt="avatar"
         />
         { }
-        <div class="py-4 px-6">
+        <div class="py-4 px-6 min-h-72">
           <h1 class="text-2xl font-semibold text-gray-800">{event ? event.name : ''}</h1>
-          <p class="py-2 text-lg text-gray-700">{event ? event.description : ''}</p>
+          <p class="py-2 max-h-16 overflow-hidden text-lg text-gray-700">{event ? event.description : ''}</p>
           <div class="flex items-center mt-4 text-gray-700">
             <FontAwesomeIcon icon={faClock} />
             <h1 class="px-2 text-sm">{event ? date.toLocaleString() : ''}</h1>

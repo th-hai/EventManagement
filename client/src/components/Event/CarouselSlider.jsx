@@ -6,7 +6,7 @@ const CarouselSlider = (props) => {
     const { event } = props
 
     return(
-        <Carousel className="w-9/12 h-full mb-40 mx-auto mt-40" indicators={true} navButtonsAlwaysInvisible={true}>
+        <Carousel className="w-9/12 h-full mb-5 mx-auto mt-40" indicators={true} navButtonsAlwaysInvisible={true}>
         {
             event && event.imageUrl && event.imageUrl.map( (image, i) => <Item key={i} image={image} event={event} /> )
         }
