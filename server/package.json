@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "A website help you to manage all the events",
   "main": "app.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.13.4"
+},
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },

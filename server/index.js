@@ -20,7 +20,7 @@ app.use(fileUpload({
 }));
 
 // Middlewares
-const routes = require('./server/routes')
+const routes = require('./routes')
 
 
 // ROUTES
