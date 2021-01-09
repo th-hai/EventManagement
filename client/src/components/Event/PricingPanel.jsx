@@ -22,7 +22,7 @@ const PricingPanel = (props) => {
     <section>
       <div class="container max-w-full mx-auto py-24 px-6">
         <h1 class="text-center text-4xl text-black font-medium leading-snug tracking-wider">
-          Types of ticket
+          Types of Ticket
         </h1>
 
         <div class="h-1 mx-auto bg-indigo-200 w-24 opacity-75 mt-4 rounded"></div>

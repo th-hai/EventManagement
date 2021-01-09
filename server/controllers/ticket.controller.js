@@ -4,11 +4,11 @@ const create = (req, res) => {
     
     const name = req.body.name;
     const price = req.body.price;
-    const ticketType = req.body.ticketType;
-    const ticketDetail = req.body.ticketDetail;
+    const type = req.body.type;
+    const detail = req.body.detail;
     const quantity = req.body.quantity;
 
-    if (!name || !price || !ticketType || !ticketDetail || !quantity) {
+    if (!name || !price || !type || !quantity) {
       return res
         .status(400)
         .json({ error: 'You must fill out all field.' });
@@ -17,8 +17,8 @@ const create = (req, res) => {
     const ticket = new Ticket({
       name: req.body.name,
       price: req.body.price,
-      ticketType: req.body.ticketType,
-      ticketDetail: req.body.ticketDetail,
+      type: req.body.type,
+      detail: req.body.detail,
       quantity: req.body.quantity
     });
   
@@ -69,8 +69,8 @@ const create = (req, res) => {
     const update = { 
         name: req.body.name,
         price: req.body.price,
-        ticketType: req.body.ticketType,
-        ticketDetail: req.body.ticketDetail,
+        type: req.body.type,
+        detail: req.body.detail,
         quantity: req.body.quantity
     };
 

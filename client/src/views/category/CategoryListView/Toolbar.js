@@ -36,13 +36,13 @@ const Toolbar = ({ className, ...rest }) => {
         display="flex"
         justifyContent="flex-end"
       >
-        
+       
         <Link to="create" >
         <Button 
           color="primary"
           variant="contained"
         >
-          Add Event
+          Add Ticket
         </Button>
         </Link>
       </Box>
@@ -64,7 +64,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search customer"
+                placeholder="Search category"
                 variant="outlined"
               />
             </Box>

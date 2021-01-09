@@ -39,13 +39,20 @@ import SpeakerDetail from "./components/Speakers/SpeakerDetail";
 import DashboardLayout from "./components/AdminLayout";
 import CustomerListView from "./views/customer/CustomerListView";
 import SpeakerListView from "./views/speaker/SpeakerListView";
+import TicketListView from "./views/ticket/TicketListView";
+import CategoryListView from "./views/category/CategoryListView";
 import CreateSpeaker from "./components/Speakers/CreateSpeaker";
 import UpdateSpeaker from "./components/Speakers/UpdateSpeaker";
 import UpdateEvent from "./components/Event/UpdateEvent";
 import SponsorsPage from "./components/Sponsors/SponsorsPage";
 import SponsorDetail from "./components/Sponsors/SponsorDetail";
+import CreateSponsor from "./components/Sponsors/CreateSponsor";
+import UpdateSponsor from "./components/Sponsors/UpdateSponsor";
+import CreateCategory from "./components/Category/CreateCategory";
+import UpdateCategory from "./components/Category/UpdateCategory";
 import SponsorListView from "./views/sponsor/SponsorListView";
-
+import CreateTicket from "./components/Ticket/CreateTicket";
+import UpdateTicket from "./components/Ticket/UpdateTicket";
 
 // import DashboardLayout from "./components/AdminLayout";
 function App() {
@@ -121,13 +128,21 @@ function App() {
             <Route path="/speakers" element={<SpeakerListView/>}/>
             <Route path="/speakers/create" element={<CreateSpeaker/>}/>,
             <Route path="/speakers/:id" element={<UpdateSpeaker/>}/>,
-            <Route path="/sponsors" element={<SponsorListView/>}/>
+            <Route path="/sponsors" element={<SponsorListView/>}/>,
+            <Route path="/sponsors/create" element={<CreateSponsor/>}/>,
+            <Route path="/sponsors/:id" element={<UpdateSponsor/>}/>,
+            <Route path="/categories" element={<CategoryListView/>}/>,
+            <Route path="/categories/create" element={<CreateCategory/>}/>,
+            <Route path="/categories/:id" element={<UpdateCategory/>}/>,
+            <Route path="/tickets" element={<TicketListView/>}/>
+            <Route path="/tickets/create" element={<CreateTicket/>}/>,
+            <Route path="/tickets/:id" element={<UpdateTicket/>}/>,
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,
             <Route path="/reset/:token" element={ auth.isLogged ? <PageNotFound/> : <ResetPassword />}/>
           </Route>
-          {/* <Route path="/speakers/:id" element={<UpdateSpeaker/>} >
+          {/* <Route path="/tickets/:id" element={<UpdateTicket/>} >
             <Route path="/create" element={<CreateEvent/>}/>
           </Route> */}
         </Routes>

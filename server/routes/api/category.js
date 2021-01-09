@@ -6,14 +6,16 @@ const categoryController = require('../../controllers/category.controller')
 const auth = require('../../middlewares/auth');
 const role = require('../../middlewares/role');
 
-router.post('/add', categoryController.create);
+router.post('/create', categoryController.create);
 
 // fetch all categories api
 
 router.get('/', categoryController.get);
 
-router.put('/:id', categoryController.updateCategory);
+router.get('/:id', categoryController.getCategory);
 
-router.delete('/delete/:id', categoryController.deleteCategory);
+router.patch('/:id', categoryController.updateCategory);
+
+router.delete('/:id', categoryController.deleteCategory);
 
 module.exports = router;

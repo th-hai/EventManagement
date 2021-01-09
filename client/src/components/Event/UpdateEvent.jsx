@@ -70,7 +70,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     axios.get('/api/tickets')
     .then(res => {
-      setTickets(res.data.tickets.map(ticket => ({value: ticket._id, label: ticket.name})));
+      setTickets(res.data.tickets.map(ticket => ({value: ticket._id, label: `${ticket.name} - ${ticket.type}`})));
     })
     .catch(error => {
       console.log(error)
@@ -105,18 +105,22 @@ const UpdateEvent = () => {
   }
 
   const handleChangeSponsors = async e => {
+    if(Array.isArray(e))
     setEvent({...event, sponsors: e.map(sponsor => sponsor.value), err: '', success: ''})
   }
 
   const handleChangeCategories = async e => {
+    if(Array.isArray(e))
     setEvent({...event, categories: e.map(category => category.value), err: '', success: ''})
   }
-
+  
   const handleChangeSpeakers = async e => {
+    if(Array.isArray(e))
     setEvent({...event, speakers: e.map(speaker => speaker.value), err: '', success:''})
   }
-
+  
   const handleChangeTickets = async e => {
+    if(Array.isArray(e))
     setEvent({...event, tickets: e.map(ticket => ticket.value), err: '', success:''})
   }
 
@@ -212,10 +216,10 @@ const UpdateEvent = () => {
         })
         
         setEvent({...event, err: '' , success: "Update Event Successffully!"})
-        // navigate('/speakers')
-    } catch (err) {
+      } catch (err) {
         setEvent({...event, err: err.response.data.msg , success: ''})
-    }
+      }
+      navigate('/dashboard/events')
   
   }
 

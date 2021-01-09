@@ -13,14 +13,14 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
+  Star as StarIcon,
+  Calendar as CalendarIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
+  Layers as LayersIcon,
+  Users as UsersIcon,
+  Tag as TagsIcon,
+  Activity as ActivityIcon,
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -38,21 +38,36 @@ const items = [
   },
   {
     href: '/dashboard/events',
-    icon: UsersIcon,
+    icon: CalendarIcon,
     title: 'Events'
   },
   {
+    href: '/dashboard/categories',
+    icon: TagsIcon,
+    title: 'Categories'
+  },
+  {
     href: '/dashboard/speakers',
-    icon: ShoppingBagIcon,
+    icon: UsersIcon,
     title: 'Speakers'
   },
   {
     href: '/dashboard/sponsors',
-    icon: LockIcon,
+    icon: StarIcon,
     title: 'Sponsors'
   },
   {
-    href: '/admin/account',
+    href: '/dashboard/tickets',
+    icon: LayersIcon,
+    title: 'Tickets'
+  },
+  {
+    href: '/dashboard/transactions',
+    icon: ActivityIcon,
+    title: 'Transactions'
+  },
+  {
+    href: '/admin/profile',
     icon: UserIcon,
     title: 'Account'
   }

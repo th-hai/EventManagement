@@ -13,8 +13,8 @@ const EventDetail = (props) => {
     const [categories, setCategories] = useState([]);
     const [speakers, setSpeakers] = useState([]);
 
-    useEffect(() => {
-        axios.get('/api/events/' + id)
+    useEffect( async () => {
+        await axios.get('/api/events/' + id)
         .then(res => {
           setEvent(res.data);
         
@@ -24,8 +24,8 @@ const EventDetail = (props) => {
         })
       }, {})
     
-    useEffect(() => {
-        axios.get('/api/events/' + id +'/categories')
+    useEffect( async () => {
+      await axios.get('/api/events/' + id +'/categories')
         .then(res => {
           setCategories(res.data);
         })
@@ -34,8 +34,8 @@ const EventDetail = (props) => {
         })
       }, {})
 
-      useEffect(() => {
-        axios.get('/api/events/' + id +'/speakers')
+      useEffect( async () => {
+        await axios.get('/api/events/' + id +'/speakers')
         .then(res => {
           setSpeakers(res.data);
         })
@@ -43,6 +43,7 @@ const EventDetail = (props) => {
           console.log(error)
         })
       }, {})
+
       
   return (
 
@@ -55,18 +56,12 @@ const EventDetail = (props) => {
         
         <Timeline event={event}/>
         <FullyDescription event={event}/>
-        <SpeakerList speakers={speakers} />
-        <PricingPanel event={event}/>
+        {console.log(event, speakers)}
+        {speakers && speakers.length > 0 ? <SpeakerList speakers={speakers} />: <div></div>}
+        {/* {(event.tickets.length > 0) ? <PricingPanel event={event} />: <div></div>} */}
+        
+        {/* <PricingPanel event={event}/> */}
     </div>
   );
 };
-
-// const mapStateToProps = state => ({
-//     event: state.event.event
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//     getEvent : (id) => dispatch(getEventById(id))
-// })
-// export default connect(mapStateToProps, mapDispatchToProps)(EventDetail);
 export default EventDetail

@@ -9,14 +9,19 @@ const TicketSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    ticketType: {
+    type: {
         type: String,
-        required: true,
-        min: 1,
-        max: 20
+        required: true
     },
-    ticketDetail: String,
-    quantity: Number
-});
+    detail: {
+        type: String,
+        max: 400
+    },
+    quantity: { 
+        type: Number,
+        required: true,
+        max: 10000
+    }
+}, {timestamps: true});
 
 module.exports = mongoose.model('Tickets', TicketSchema);

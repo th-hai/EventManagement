@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import axios from "axios";
-import {addSpeaker} from '../../redux/actions/speakerAction'
 import {showErrMsg, showSuccessMsg} from '../utils/Notification'
 import validator from 'validator';
 const initialState = {
@@ -22,7 +21,6 @@ const initialState = {
     const [data, setData] = useState(initialState)
     const [avatar, setAvatar] = useState('');
     const [loading, setLoading] = useState(false);
-    const auth = useSelector(state => state.auth);
     const token = useSelector(state => state.token);
 
     const navigate = useNavigate()

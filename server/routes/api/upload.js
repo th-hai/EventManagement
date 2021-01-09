@@ -12,4 +12,7 @@ router.post('/upload_thumbnail', auth, uploadCtrl.uploadThumbnail)
 
 router.post('/upload_image', auth, uploadCtrl.uploadImages)
 
+router.post('/upload_logo', auth, uploadCtrl.uploadLogo)
+
+
 module.exports = router;
