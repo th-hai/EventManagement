@@ -6,6 +6,8 @@ import PricingPanel from "./PricingPanel";
 import Timeline from "./Timeline";
 import FullyDescription from "./FullyDescription";
 import SpeakerList from "./SpeakerList";
+import SponsorList from "./SponsorList";
+
 const EventDetail = (props) => {
     const mainContent = window.innerHeight - 200
     let { id } = useParams();
@@ -56,11 +58,12 @@ const EventDetail = (props) => {
         
         <Timeline event={event}/>
         <FullyDescription event={event}/>
-        {console.log(event, speakers)}
         {speakers && speakers.length > 0 ? <SpeakerList speakers={speakers} />: <div></div>}
-        {/* {(event.tickets.length > 0) ? <PricingPanel event={event} />: <div></div>} */}
         
-        {/* <PricingPanel event={event}/> */}
+        {event.tickets && event.tickets.length > 0 ? <PricingPanel event={event}/> : <div></div>}
+        
+        {event.sponsors && event.sponsors.length > 0 ? <SponsorList event={event} />: <div></div>}
+
     </div>
   );
 };

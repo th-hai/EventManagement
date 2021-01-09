@@ -18,4 +18,6 @@ router.patch('/:id', categoryController.updateCategory);
 
 router.delete('/:id', categoryController.deleteCategory);
 
+router.get('/:id/events', categoryController.getEventsByCategory)
+
 module.exports = router;

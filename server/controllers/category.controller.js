@@ -107,10 +107,25 @@ const deleteCategory = (req, res) => {
   });
 };
 
+const getEventsByCategory = async (req, res) => {
+  try {
+    const event = await Category.findOne({
+      _id: req.params.id
+    }).populate('events');
+    if (event)
+      res.send(event);
+  } catch (err) {
+    res.send({
+      message: err.message
+    })
+  }
+}
+
 module.exports = {
   create,
   get,
   getCategory,
   updateCategory,
-  deleteCategory
+  deleteCategory,
+  getEventsByCategory
 }

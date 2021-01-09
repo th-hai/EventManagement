@@ -8,7 +8,7 @@ const PricingPanel = (props) => {
   let [tickets, setTickets] = useState([]);
   useEffect(() => {
     axios
-      .get("/api/events/" + id + "/tickets")
+      .get(`/api/events/${id}/tickets`)
       .then((res) => {
         setTickets(res.data);
       })
@@ -17,265 +17,49 @@ const PricingPanel = (props) => {
       });
   }, []);
 
+  function Ticket(props) {
+    return (
+      <div class="p-4 md:w-1/3">
+        <div class="h-full hover:shadow-md hover:bg-green-100 bg-white border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{props.ticket.type}</h1>
+            <p class="leading-relaxed mb-3">{props.ticket.detail}</p>
+            <div class="flex items-center flex-wrap ">
+              <button class="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</button>
+              <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                <svg class="w-5 h-5 mt-2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                </svg>{props.ticket.quantity}
+              </span>
+              <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                <svg class="w-6 h-5 mr-1 mt-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+  <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+                </svg>{props.ticket.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     // <!-- component -->
     <section>
-      <div class="container max-w-full mx-auto py-24 px-6">
+      <div class="container max-w-full mx-auto p-6">
         <h1 class="text-center text-4xl text-black font-medium leading-snug tracking-wider">
-          Types of Ticket
+          TICKETS
         </h1>
 
         <div class="h-1 mx-auto bg-indigo-200 w-24 opacity-75 mt-4 rounded"></div>
-
-        <div class="max-w-full md:max-w-6xl mx-auto my-3 md:px-8">
-          <div class="relative block flex flex-col md:flex-row items-center">
-            <div class="w-11/12 max-w-sm sm:w-3/5 lg:w-1/3 sm:my-5 my-8 relative z-0 rounded-lg shadow-lg md:-mr-4">
-              <div class="bg-white text-black rounded-lg shadow-inner shadow-lg overflow-hidden">
-                <div class="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
-                  <h1 class="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide">
-                    {tickets && tickets.length > 0 && tickets[0].ticketType}
-                  </h1>
-                  <h2 class=" text-2xl text-gray-500 text-center pb-6">
-                    ${tickets && tickets.length > 0 && tickets[0].price}
-                  </h2>
-                  <h2 class="text-sm text-gray-500 text-center pb-6"></h2>
-                  {tickets && tickets.length > 0 && tickets[0].ticketDetail}
-                </div>
-
-                <div class="flex flex-wrap mt-3 px-6">
-                  <ul>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">No setup</span>
-                    </li>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">No setups</span>
-                    </li>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">Speed</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="block flex items-center p-8  uppercase">
-                  <button
-                    class="mt-3 text-lg font-semibold 
-	bg-black w-full text-white rounded-lg 
-	px-6 py-3 block shadow-xl hover:bg-gray-700"
-                  >
-                    Select
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="w-full max-w-md sm:w-2/3 lg:w-1/3 sm:my-5 my-8 relative z-10 bg-white rounded-lg shadow-lg">
-              <div class="text-sm leading-none rounded-t-lg bg-gray-200 text-black font-semibold uppercase py-4 text-center tracking-wide">
-                Most Popular
-              </div>
-              <div class="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
-                <h1 class="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide">
-                {tickets && tickets.length > 1 && tickets[1].ticketType}
-                </h1>
-                <h2 class="text-sm text-gray-500 text-center pb-6">
-                  <span class="text-3xl">${tickets && tickets.length > 0 && tickets[1].price}</span> 
-                </h2>
-                {tickets && tickets.length > 1 && tickets[1].ticketDetail}
-              </div>
-              <div class="flex pl-12 justify-start sm:justify-start mt-3">
-                <ul>
-                  <li class="flex items-center">
-                    <div class="rounded-full p-2 fill-current text-green-700">
-                      <svg
-                        class="w-6 h-6 align-middle"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                      </svg>
-                    </div>
-                    <span class="text-gray-700 text-lg ml-3">No setup</span>
-                  </li>
-                  <li class="flex items-center">
-                    <div class=" rounded-full p-2 fill-current text-green-700">
-                      <svg
-                        class="w-6 h-6 align-middle"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                      </svg>
-                    </div>
-                    <span class="text-gray-700 text-lg ml-3">Hidden fees</span>
-                  </li>
-                  <li class="flex items-center">
-                    <div class=" rounded-full p-2 fill-current text-green-700">
-                      <svg
-                        class="w-6 h-6 align-middle"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                      </svg>
-                    </div>
-                    <span class="text-gray-700 text-lg ml-3">Original</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="block flex items-center p-8  uppercase">
-                <button class="mt-3 text-lg font-semibold bg-black w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-gray-700">
-                  Select
-                </button>
-              </div>
-            </div>
-            <div class="w-11/12 max-w-sm sm:w-3/5 lg:w-1/3 sm:my-5 my-8 relative z-0 rounded-lg shadow-lg md:-ml-4">
-              <div class="bg-white text-black rounded-lg shadow-inner shadow-lg overflow-hidden">
-                <div class="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
-                  <h1 class="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide">
-                  {tickets && tickets.length > 2 && tickets[2].ticketType}
-                  </h1>
-                  <h2 class="text-2xl text-gray-500 text-center pb-6">
-                  ${tickets && tickets.length > 2 && tickets[2].price}
-                  </h2>
-                  {tickets && tickets.length > 2 && tickets[2].ticketDetail}
-                </div>
-                <div class="flex flex-wrap mt-3 px-6">
-                  <ul>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">Electric</span>
-                    </li>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">Monthly</span>
-                    </li>
-                    <li class="flex items-center">
-                      <div class=" rounded-full p-2 fill-current text-green-700">
-                        <svg
-                          class="w-6 h-6 align-middle"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      </div>
-                      <span class="text-gray-700 text-lg ml-3">No setup</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="block flex items-center p-8  uppercase">
-                  <button class="mt-3 text-lg font-semibold bg-black w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-gray-700">
-                    Select
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+       
+        <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+            {
+              tickets.map(ticket => <Ticket ticket={ticket} />)
+            }
+        </div>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ const Timeline = (props) => {
     let { id } = useParams();
     const {event} = props
     const date = new Date(event.startTime)
+    const endDate = new Date(event.endTime)
 
   return (
     // <!-- component -->
@@ -33,7 +34,7 @@ const Timeline = (props) => {
             </div>
 
             <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
-          {date.toLocaleTimeString()}
+          {` ${date.toLocaleTimeString()} - ${ endDate.toLocaleTimeString()}`}
         </div>
           </div>
          
