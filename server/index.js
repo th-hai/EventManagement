@@ -11,6 +11,9 @@ require('dotenv/config');
 
 const port = process.env.PORT || 5000;
 
+app.use(express.static("public"));
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
@@ -18,6 +21,16 @@ app.use(cors());
 app.use(fileUpload({
     useTempFiles: true
 }));
+
+mongoose.connect(process.env.MONGO_URI, {
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, error => {
+    if(error) throw error;
+    console.log('Connected to Database');
+})
 
 // Middlewares
 const routes = require('./routes')
@@ -31,16 +44,7 @@ app.get('/', (req, res) => {
 });
 // Connect to DB
 
-mongoose.connect(process.env.MONGO_URI, {
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, error => {
-    // console.log(mongoose.connection);
-    if(error) throw error;
-    console.log('Connected to Database');
-})
+
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
