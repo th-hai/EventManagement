@@ -16,7 +16,7 @@ const EventPage = () => {
     category: query.get("category")
   }
   useEffect(() => {
-    axios.get('/api/events',
+    axios.get('https://event-management-hcmute.herokuapp.com/api/events',
     { params: queryString },
     )
     .then(res => {

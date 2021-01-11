@@ -35,7 +35,7 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('/api/users/login', {email, password})
+            const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/login', {email, password})
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin', true)
 
@@ -50,7 +50,7 @@ const Login = () => {
 
     const responseGoogle = async (response) => {
       try {
-          const res = await axios.post('/api/users/google_login', {tokenId: response.tokenId})
+          const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/google_login', {tokenId: response.tokenId})
 
           setUser({...user, error:'', success: res.data.msg})
           localStorage.setItem('firstLogin', true)
@@ -66,7 +66,7 @@ const Login = () => {
   const responseFacebook = async (response) => {
       try {
           const {accessToken, userID} = response
-          const res = await axios.post('/api/users/facebook_login', {accessToken, userID})
+          const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/facebook_login', {accessToken, userID})
 
           setUser({...user, error:'', success: res.data.msg})
           localStorage.setItem('firstLogin', true)
