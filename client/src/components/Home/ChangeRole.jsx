@@ -33,7 +33,7 @@ function ChangeRole() {
     const changeRole = async () => {
         console.log(role)
         try {
-            axios.patch(`/api/users/${id}`, {role: role},{
+            axios.patch(`https://event-management-hcmute.herokuapp.com/api/users/${id}`, {role: role},{
                 headers: {Authorization: token}
             })
 

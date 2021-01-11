@@ -95,7 +95,7 @@ const Results = ({ className, users, onReload, ...rest }) => {
   };
 let DeleteSpeaker = (id) => {
   
-    axios.delete(`/api/users/${id}`, {
+    axios.delete(`https://event-management-hcmute.herokuapp.com/api/users/${id}`, {
       headers: {Authorization: token}
     })
     .then(res => {

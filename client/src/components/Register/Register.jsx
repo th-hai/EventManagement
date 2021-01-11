@@ -40,7 +40,7 @@ const Register = () => {
           return setUser({...user, err: "Password did not match.", success: ''})
 
       try {
-          const res = await axios.post('/api/users/register', {
+          const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/register', {
               name, email, password
           })
 

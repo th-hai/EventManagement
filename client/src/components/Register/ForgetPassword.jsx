@@ -24,7 +24,7 @@ function ForgotPassword() {
             return setData({...data, err: 'Invalid emails.', success: ''})
             
         try {
-            const res = await axios.post('/api/users/forgot', {email})
+            const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/forgot', {email})
 
             return setData({...data, err: '', success: res.data.msg})
         } catch (err) {

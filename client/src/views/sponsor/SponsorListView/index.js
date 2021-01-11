@@ -30,7 +30,7 @@ const SponsorListView = () => {
 
 const RecallEvents = () =>
 {
-  axios.get('/api/sponsors/all')
+  axios.get('https://event-management-hcmute.herokuapp.com/api/sponsors/all')
   .then(res => {
     setSponsors(res.data.sponsors);
   })

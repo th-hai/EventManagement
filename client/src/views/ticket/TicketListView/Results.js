@@ -93,7 +93,7 @@ const Results = ({ className, tickets, onReload, ...rest }) => {
   };
 let DeleteSpeaker = (id) => {
   
-    axios.delete('/api/tickets/' + id)
+    axios.delete('https://event-management-hcmute.herokuapp.com/api/tickets/' + id)
     .then(res => {
       
     })

@@ -23,7 +23,7 @@ const UpdateSponsor = () => {
 
     useEffect(() => {
         axios
-          .get("/api/sponsors/" + id)
+          .get("https://event-management-hcmute.herokuapp.com/api/sponsors/" + id)
           .then((res) => {
             setSponsor(res.data);
           })
@@ -50,7 +50,7 @@ const UpdateSponsor = () => {
         formData.append('file', file)
 
         setLoading(true)
-        const res = await axios.post('/api/upload/upload_logo', formData, {
+        const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_logo', formData, {
             headers: {'content-type': 'multipart/form-data', Authorization: token}
         })
 
@@ -81,7 +81,7 @@ const UpdateSponsor = () => {
           logo: logo,
           description: description
       }
-          axios.patch(`/api/sponsors/${id}`, newSponsor,{
+          axios.patch(`https://event-management-hcmute.herokuapp.com/api/sponsors/${id}`, newSponsor,{
               headers: {Authorization: token}
           })
           setSponsor({...sponsor, err: '' , success: "Add Speaker Successffully!"})

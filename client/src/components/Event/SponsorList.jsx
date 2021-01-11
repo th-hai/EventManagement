@@ -11,7 +11,7 @@ const SponsorList = (props) => {
   let [sponsors, setSponsors] = useState([]);
   useEffect(() => {
     axios
-      .get(`/api/events/${id}/sponsors`)
+      .get(`https://event-management-hcmute.herokuapp.com/api/events/${id}/sponsors`)
       .then((res) => {
         setSponsors(res.data);
       })

@@ -8,7 +8,7 @@ export const dispatchLogin = () => {
 }
 
 export const fetchUser = async (token) => {
-    const res = await axios.get('/api/users/profile', {
+    const res = await axios.get('https://event-management-hcmute.herokuapp.com/api/users/profile', {
         headers: {Authorization: token}
     })
     return res;

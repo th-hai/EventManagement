@@ -30,7 +30,7 @@ const EventListView = () => {
 
 const RecallEvents = () =>
 {
-  axios.get('/api/events/all')
+  axios.get('https://event-management-hcmute.herokuapp.com/api/events/all')
   .then(res => {
     setEvents(res.data.events);
   })

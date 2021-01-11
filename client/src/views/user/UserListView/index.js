@@ -34,7 +34,7 @@ const UserListView = () => {
 
 const RecallUsers = () =>
 {
-  axios.get('/api/users/all', {
+  axios.get('https://event-management-hcmute.herokuapp.com/api/users/all', {
     headers: {Authorization: token}
 })
   .then(res => {

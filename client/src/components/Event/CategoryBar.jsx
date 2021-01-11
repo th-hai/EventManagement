@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
 import axios from "axios";
 const CategoryBar = () => {
   
   let [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
-      .get(`/api/categories`)
+      .get(`https://event-management-hcmute.herokuapp.com/api/categories`)
       .then((res) => {
         setCategories(res.data.categories);
       })

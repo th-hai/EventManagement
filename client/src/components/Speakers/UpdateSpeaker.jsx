@@ -28,7 +28,7 @@ const initialState = {
     
     useEffect(() => {
         axios
-          .get("/api/speakers/" + id)
+          .get("https://event-management-hcmute.herokuapp.com/api/speakers/" + id)
           .then((res) => {
             setData(res.data);
             //   console.log(res)
@@ -56,7 +56,7 @@ const initialState = {
         formData.append('file', file)
 
         setLoading(true)
-        const res = await axios.post('/api/upload/upload_speaker', formData, {
+        const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_speaker', formData, {
             headers: {'content-type': 'multipart/form-data', Authorization: token}
         })
 
@@ -96,7 +96,7 @@ const initialState = {
             instagramUrl: instagramUrl
           }
       }
-          axios.patch('/api/speakers/'+ id, newData,{
+          axios.patch('https://event-management-hcmute.herokuapp.com/api/speakers/'+ id, newData,{
               headers: {Authorization: token}
           })
           

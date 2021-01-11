@@ -47,7 +47,7 @@ const UpdateEvent = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    axios.get('/api/events/' + id)
+    axios.get('https://event-management-hcmute.herokuapp.com/api/events/' + id)
     .then((res) => {
       setEvent(res.data);
       console.log(res.data)
@@ -58,7 +58,7 @@ const UpdateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/categories')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/categories')
     .then(res => {
       setCategories(res.data.categories.map(category => ({value: category._id, label: category.name})));
     })
@@ -68,7 +68,7 @@ const UpdateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/tickets')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/tickets')
     .then(res => {
       setTickets(res.data.tickets.map(ticket => ({value: ticket._id, label: `${ticket.name} - ${ticket.type}`})));
     })
@@ -78,7 +78,7 @@ const UpdateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/sponsors/all')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/sponsors/all')
     .then(res => {
       setSponsors(res.data.sponsors.map(sponsor => ({value: sponsor._id, label: sponsor.name})));
       // console.log(res.data)
@@ -89,7 +89,7 @@ const UpdateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/speakers/all')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/speakers/all')
     .then(res => {
       setSpeakers(res.data.speakers.map(speaker => ({value: speaker._id, label: speaker.name})));
     })
@@ -150,7 +150,7 @@ const UpdateEvent = () => {
       
       setLoading(true)
       
-      const res = await axios.post('/api/upload/upload_image', formData, {
+      const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_image', formData, {
         headers: {'content-type': 'multipart/form-data', Authorization: token}
       })
       
@@ -180,7 +180,7 @@ const UpdateEvent = () => {
       
       setLoading(true)
       
-      const res = await axios.post('/api/upload/upload_thumbnail', formData, {
+      const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_thumbnail', formData, {
         headers: {'content-type': 'multipart/form-data', Authorization: token}
       })
       
@@ -211,7 +211,7 @@ const UpdateEvent = () => {
 
     try {
       const newEvent = event
-        axios.patch(`/api/events/${id}`, newEvent,{
+        axios.patch(`https://event-management-hcmute.herokuapp.com/api/events/${id}`, newEvent,{
             headers: {Authorization: token}
         })
         

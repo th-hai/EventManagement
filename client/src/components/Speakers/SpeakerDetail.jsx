@@ -13,11 +13,9 @@ const SpeakerDetail = () => {
 
   useEffect(() => {
     axios
-      .get("/api/speakers/" + id)
+      .get("https://event-management-hcmute.herokuapp.com/api/speakers/" + id)
       .then((res) => {
         setSpeaker(res.data);
-        //   console.log(res)
-        console.log(res.data.socialNetwork.facebookUrl);
       })
       .catch((error) => {
         console.log(error);

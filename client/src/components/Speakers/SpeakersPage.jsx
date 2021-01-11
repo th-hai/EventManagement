@@ -7,7 +7,7 @@ const SpeakersPage = () => {
 
   useEffect(() => {
     axios
-      .get("/api/speakers")
+      .get("https://event-management-hcmute.herokuapp.com/api/speakers")
       .then((res) => {
         setSpeakers(res.data);
       })

@@ -20,7 +20,7 @@ const UpdateCategory = () => {
     
     useEffect(() => {
         axios
-          .get(`/api/categories/${id}`)
+          .get(`https://event-management-hcmute.herokuapp.com/api/categories/${id}`)
           .then((res) => {
             setCategory(res.data);
           })
@@ -49,7 +49,7 @@ const UpdateCategory = () => {
           name: name,
           description: description
       }
-          axios.patch(`/api/categories/${id}`, newCategory,{
+          axios.patch(`https://event-management-hcmute.herokuapp.com/api/categories/${id}`, newCategory,{
               headers: {Authorization: token}
           })
           

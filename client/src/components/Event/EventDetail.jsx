@@ -16,7 +16,7 @@ const EventDetail = (props) => {
     const [speakers, setSpeakers] = useState([]);
 
     useEffect( async () => {
-        await axios.get('/api/events/' + id)
+        await axios.get('https://event-management-hcmute.herokuapp.com/api/events/' + id)
         .then(res => {
           setEvent(res.data);
         
@@ -27,7 +27,7 @@ const EventDetail = (props) => {
       }, {})
     
     useEffect( async () => {
-      await axios.get('/api/events/' + id +'/categories')
+      await axios.get('https://event-management-hcmute.herokuapp.com/api/events/' + id +'/categories')
         .then(res => {
           setCategories(res.data);
         })
@@ -37,7 +37,7 @@ const EventDetail = (props) => {
       }, {})
 
       useEffect( async () => {
-        await axios.get('/api/events/' + id +'/speakers')
+        await axios.get('https://event-management-hcmute.herokuapp.com/api/events/' + id +'/speakers')
         .then(res => {
           setSpeakers(res.data);
         })

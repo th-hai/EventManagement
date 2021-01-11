@@ -38,7 +38,7 @@ const CreateSponsor = () => {
         formData.append('file', file)
 
         setLoading(true)
-        const res = await axios.post('/api/upload/upload_logo', formData, {
+        const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_logo', formData, {
             headers: {'content-type': 'multipart/form-data', Authorization: token}
         })
 
@@ -69,7 +69,7 @@ const CreateSponsor = () => {
           logo: logoUrl,
           description: description
       }
-          axios.post('/api/sponsors/create', newSponsor,{
+          axios.post('https://event-management-hcmute.herokuapp.com/api/sponsors/create', newSponsor,{
               headers: {Authorization: token}
           })
           

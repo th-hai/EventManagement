@@ -24,7 +24,7 @@ const UpdateTicket = () => {
 
     useEffect(() => {
         axios
-          .get("/api/tickets/" + id)
+          .get("https://event-management-hcmute.herokuapp.com/api/tickets/" + id)
           .then((res) => {
             setTicket(res.data);
             //   console.log(res)
@@ -61,7 +61,7 @@ const UpdateTicket = () => {
           quantity: quantity,
           detail: detail
       }
-          axios.patch(`/api/tickets/${id}`, newTicket,{
+          axios.patch(`https://event-management-hcmute.herokuapp.com/api/tickets/${id}`, newTicket,{
               headers: {Authorization: token}
           })
           

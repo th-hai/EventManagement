@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from "axios";
 import Selector from 'react-select'
 import DatePicker from "react-datepicker";
@@ -46,7 +46,7 @@ const CreateEvent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/categories')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/categories')
     .then(res => {
       setCategories(res.data.categories.map(category => ({value: category._id, label: category.name})));
       
@@ -57,7 +57,7 @@ const CreateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/tickets')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/tickets')
     .then(res => {
       setTickets(res.data.tickets.map(ticket => ({value: ticket._id, label: `${ticket.name} - ${ticket.type}`})));
       // console.log(res.data)
@@ -68,7 +68,7 @@ const CreateEvent = () => {
   }, [])
 
   useEffect(() => {
-    axios.get('/api/sponsors/all')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/sponsors/all')
     .then(res => {
       setSponsors(res.data.sponsors.map(sponsor => ({value: sponsor._id, label: sponsor.name})));
       // console.log(res.data)
@@ -140,7 +140,7 @@ const CreateEvent = () => {
       
       setLoading(true)
       
-      const res = await axios.post('/api/upload/upload_image', formData, {
+      const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_image', formData, {
         headers: {'content-type': 'multipart/form-data', Authorization: token}
       })
       
@@ -170,7 +170,7 @@ const CreateEvent = () => {
       
       setLoading(true)
       
-      const res = await axios.post('/api/upload/upload_thumbnail', formData, {
+      const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_thumbnail', formData, {
         headers: {'content-type': 'multipart/form-data', Authorization: token}
       })
       
@@ -201,7 +201,7 @@ const CreateEvent = () => {
 
     try {
       const newEvent = event
-        axios.post('/api/events/create', newEvent,{
+        axios.post('https://event-management-hcmute.herokuapp.com/api/events/create', newEvent,{
             headers: {Authorization: token}
         })
         

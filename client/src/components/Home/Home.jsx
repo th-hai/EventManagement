@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ContainerLarge from "./Container-large";
-import Intro from "./Intro";
 import Sponsor from "./Sponsor";
-import Ticket from "./Ticket";
-import Speakers from "./Features";
-
-import CarouselSlider from "../Event/CarouselSlider";
-import SpeakerCard from "../Speakers/SpeakerContainer";
 import SpeakersContainer from "../Speakers/SpeakerContainer";
 import Quote from "./Quote";
 import Banner from "./Banner";
@@ -15,10 +9,9 @@ function Home() {
     const [speakers, setSpeakers] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/speakers')
+    axios.get('https://event-management-hcmute.herokuapp.com/api/speakers')
     .then(res => {
       setSpeakers(res.data);
-      console.log(res.data)
       
     })
     .catch(error => {

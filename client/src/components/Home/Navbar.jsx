@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            await axios.get('/api/users/logout')
+            await axios.get('https://event-management-hcmute.herokuapp.com/api/users/logout')
             localStorage.removeItem('firstLogin')
             window.location.href = "/";
             // navigate('/');

@@ -49,7 +49,7 @@ const CreateTicket = () => {
           quantity: quantity,
           detail: detail
       }
-          axios.post('/api/tickets/create', newTicket,{
+          axios.post('https://event-management-hcmute.herokuapp.com/api/tickets/create', newTicket,{
               headers: {Authorization: token}
           })
           

@@ -14,7 +14,7 @@ const SponsorDetail = () => {
 
   useEffect(() => {
     axios
-      .get("/api/sponsors/" + id)
+      .get("https://event-management-hcmute.herokuapp.com/api/sponsors/" + id)
       .then((res) => {
         setSponsor(res.data);
            console.log(res)

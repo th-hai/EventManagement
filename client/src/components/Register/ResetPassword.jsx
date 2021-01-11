@@ -32,7 +32,7 @@ function ResetPassword() {
             return setData({...data, err: "Password did not match.", success: ''})
         
         try {
-            const res = await axios.post('/api/users/reset', {password: password}, {
+            const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/reset', {password: password}, {
                 headers: {'Authorization': token}
             })
 

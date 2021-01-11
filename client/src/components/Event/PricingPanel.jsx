@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const PricingPanel = (props) => {
-  const { event } = props;
   let { id } = useParams();
 
   let [tickets, setTickets] = useState([]);
   useEffect(() => {
     axios
-      .get(`/api/events/${id}/tickets`)
+      .get(`https://event-management-hcmute.herokuapp.com/api/events/${id}/tickets`)
       .then((res) => {
         setTickets(res.data);
       })

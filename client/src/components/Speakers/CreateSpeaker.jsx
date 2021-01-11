@@ -45,7 +45,7 @@ const CreateSpeaker = () => {
         formData.append('file', file)
 
         setLoading(true)
-        const res = await axios.post('/api/upload/upload_speaker', formData, {
+        const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/upload/upload_speaker', formData, {
             headers: {'content-type': 'multipart/form-data', Authorization: token}
         })
 
@@ -93,7 +93,7 @@ const CreateSpeaker = () => {
             instagramUrl: instagramUrl
           }
       }
-          axios.post('/api/speakers/create', newSpeaker,{
+          axios.post('https://event-management-hcmute.herokuapp.com/api/speakers/create', newSpeaker,{
               headers: {Authorization: token}
           })
           

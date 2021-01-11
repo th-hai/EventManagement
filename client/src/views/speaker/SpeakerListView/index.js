@@ -30,7 +30,7 @@ const SpeakerListView = () => {
 
 const RecallEvents = () =>
 {
-  axios.get('/api/speakers/all')
+  axios.get('https://event-management-hcmute.herokuapp.com/api/speakers/all')
   .then(res => {
     setSpeakers(res.data.speakers);
   

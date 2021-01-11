@@ -13,8 +13,7 @@ function ActivationEmail() {
             console.log(activation_token)
             const activationEmail = async () => {
                 try {
-                    const res = await axios.post('/api/users/activate', {activation_token})
-                    console.log(res);
+                    const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/activate', {activation_token})
                     setSuccess(res.data.msg)
                 } catch (err) {
                     err.response.data.msg && setErr(err.response.data.msg)

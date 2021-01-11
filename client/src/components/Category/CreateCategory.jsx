@@ -37,7 +37,7 @@ const CreateCategory = () => {
           name: name,
           description: description
       }
-          axios.post('/api/categories/create', newCategory,{
+          axios.post('https://event-management-hcmute.herokuapp.com/api/categories/create', newCategory,{
               headers: {Authorization: token}
           })
           

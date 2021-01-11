@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 export const fetchCategories = async (token) => {
-    const res = await axios.get('/api/categories', {
+    const res = await axios.get('https://event-management-hcmute.herokuapp.com/api/categories', {
         headers: {Authorization: token}
     })
     return res;

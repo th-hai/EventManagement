@@ -92,7 +92,7 @@ const Results = ({ className, categories, onReload, ...rest }) => {
   };
 let DeleteCategory = (id) => {
   
-    axios.delete('/api/categories/' + id)
+    axios.delete('https://event-management-hcmute.herokuapp.com/api/categories/' + id)
     .then(res => {
       
     })
