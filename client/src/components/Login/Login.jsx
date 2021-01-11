@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom'
 import FloatingLabelInput from "../Register/FloatingLabelInput";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {showErrMsg, showSuccessMsg} from '../utils/Notification';
+import {showErrMsg, showSuccessMsg} from '../utils/Notification'
 import {
   faFacebookSquare,
   faGoogle,
