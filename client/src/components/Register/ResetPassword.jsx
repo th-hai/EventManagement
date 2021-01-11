@@ -15,7 +15,6 @@ const initialState = {
 function ResetPassword() {
     const [data, setData] = useState(initialState)
     const {token} = useParams();
-    console.log(token)
 
     const {password, cf_password, err, success} = data
 

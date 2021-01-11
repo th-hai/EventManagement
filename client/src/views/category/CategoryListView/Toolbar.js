@@ -42,7 +42,7 @@ const Toolbar = ({ className, ...rest }) => {
           color="primary"
           variant="contained"
         >
-          Add Ticket
+          Add Category
         </Button>
         </Link>
       </Box>

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Budget = ({ className, ...rest }) => {
+const Budget = ({ className, events, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -52,13 +52,15 @@ const Budget = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              BUDGET
+              TOTAL PLANNED COST
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              $24,000
+              {events.reduce((accumulator, currentValue) => {
+                  return accumulator + currentValue.plannedCost;
+              }, 0).toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}
             </Typography>
           </Grid>
           <Grid item>

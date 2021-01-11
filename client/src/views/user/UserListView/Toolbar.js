@@ -42,7 +42,7 @@ const Toolbar = ({ className, ...rest }) => {
           color="primary"
           variant="contained"
         >
-          Add Ticket
+          Add Speaker
         </Button>
         </Link>
       </Box>
@@ -64,7 +64,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search ticket"
+                placeholder="Search user"
                 variant="outlined"
               />
             </Box>

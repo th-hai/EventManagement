@@ -12,7 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+import PeopleIcon from '@material-ui/icons/Event';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const TotalCustomers = ({ className, events, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -52,13 +52,13 @@ const TotalCustomers = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL CUSTOMERS
+              TOTAL EVENTS
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              1,600
+              {events.length}
             </Typography>
           </Grid>
           <Grid item>

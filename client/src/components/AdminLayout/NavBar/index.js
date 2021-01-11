@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux'
+
 import {
   Avatar,
   Box,
@@ -24,11 +26,7 @@ import {
 } from 'react-feather';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Admin',
-  name: 'Thanh Hai'
-};
+
 
 const items = [
   {
@@ -67,9 +65,9 @@ const items = [
     title: 'Transactions'
   },
   {
-    href: '/admin/profile',
+    href: '/dashboard/users',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Users'
   }
 ];
 
@@ -92,7 +90,16 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
+  const auth = useSelector(state => state.auth);
 
+
+  const user = {
+    avatar: auth.user.avatarUrl,
+    jobTitle: 'Admin',
+    name: auth.user.name
+  };
+
+  
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
+import axios from "axios";
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -31,7 +32,17 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
-
+  const handleLogout = async () => {
+    try {
+        await axios.get('/api/users/logout')
+        localStorage.removeItem('firstLogin')
+        window.location.href = "/";
+        // navigate('/');
+    } catch (err) {
+        window.location.href = "/";
+        // navigate('/');
+    }
+}
   return (
     <AppBar
       className={clsx(classes.root, className)}
@@ -53,7 +64,7 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton onClick={handleLogout} color="inherit">
             <InputIcon />
           </IconButton>
         </Hidden>

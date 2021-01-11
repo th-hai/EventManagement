@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
  
 const TransactionSchema = mongoose.Schema({
-    eventId: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'events'
-    },
     userId: {
         type: Schema.Types.ObjectId,
         required: true,
@@ -30,7 +25,15 @@ const TransactionSchema = mongoose.Schema({
                 default: amount * price
             }
         }
-    ]
+    ],
+    total: {
+        type: Number
+    },
+    status : {
+        type: String,
+        default: 'Shipping',
+        enum: ['Shipping', 'Pending', 'Completed', 'Failed']
+    }
 }, { timestamps : true});
 
 module.exports = mongoose.model('Transactions', TransactionSchema);

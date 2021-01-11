@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom'
 import axios from "axios";
-import {addSpeaker} from '../../redux/actions/speakerAction'
 import {showErrMsg, showSuccessMsg} from '../utils/Notification'
 import validator from 'validator';
 const initialState = {

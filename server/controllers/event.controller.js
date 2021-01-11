@@ -22,10 +22,8 @@ const getAll = (req, res) => {
 const get = async (req, res) => {
   const limit = 9
   const page = req.params.page || 1
-  const name = req.params.name ? {name: { $regex: '.*' + req.query.name + '.*' } } : {};
   const category = req.query.category ? {categories: { $all: [ObjectId(req.query.category)] }}:{}
   // const query = {name , category}
-  console.log(req.query.category)
   try {
     // execute query with page and limit values
     const events = await Event.find(category, '-plannedCost -actualCost')

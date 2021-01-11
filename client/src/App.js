@@ -23,6 +23,8 @@ import {dispatchGetCategories, fetchCategories} from '../src/redux/actions/categ
 import Login from "./components/Login/Login";
 import PageNotFound from "./components/404/404";
 import Home from "./components/Home/Home";
+import ChangeRole from "./components/Home/ChangeRole";
+import Profile from "./components/Home/Profile";
 import MainLayout from "./components/MainLayout";
 import Register from "./components/Register/Register";
 import ActivationEmail from "./components/Register/Activation";
@@ -38,7 +40,10 @@ import Contact from "./components/Contact/Contact";
 import SpeakerDetail from "./components/Speakers/SpeakerDetail";
 import DashboardLayout from "./components/AdminLayout";
 import CustomerListView from "./views/customer/CustomerListView";
+import DashboardView from "./views/reports/DashboardView";
+import AccountView from "./views/account/AccountView";
 import SpeakerListView from "./views/speaker/SpeakerListView";
+import UserListView from "./views/user/UserListView";
 import TicketListView from "./views/ticket/TicketListView";
 import CategoryListView from "./views/category/CategoryListView";
 import CreateSpeaker from "./components/Speakers/CreateSpeaker";
@@ -53,6 +58,7 @@ import UpdateCategory from "./components/Category/UpdateCategory";
 import SponsorListView from "./views/sponsor/SponsorListView";
 import CreateTicket from "./components/Ticket/CreateTicket";
 import UpdateTicket from "./components/Ticket/UpdateTicket";
+import CartDetail from "./components/Cart/CartDetail"
 
 // import DashboardLayout from "./components/AdminLayout";
 function App() {
@@ -60,16 +66,6 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth);
-  const categories = useSelector(state => state.categories);
-
-  useEffect(() => {
-    const getCategories = async () => {
-        return fetchCategories(token).then(res => {
-          dispatch(dispatchGetCategories(res));
-        })
-      }
-      getCategories()
-  },[token, dispatch])
 
   useEffect(() => {
     const firstLogin = localStorage.getItem('firstLogin')
@@ -105,6 +101,9 @@ function App() {
           <Route path="/" element={<MainLayout/>} >
             <Route path="/" element={<Home/>} />,
             <Route path="home" element={<Navigate to="/"/>} />,
+            <Route path="cart" element={<CartDetail/>} />,
+            <Route path="profile" element={<Profile/>} />,
+            <Route path="/profile/reset" element={<ResetPassword/>} />,
             <Route path="login" element={ auth.isLogged ? <PageNotFound/>: <Login/>} />
             <Route path="register" element={ auth.isLogged ? <PageNotFound/> : <Register/>} />,
             <Route path="user" element={<ActivationEmail/>} />,
@@ -121,7 +120,7 @@ function App() {
           </Route>
           <Route path="/dashboard" element={auth.isAdmin ? <DashboardLayout/> : <PageNotFound/>}> 
           {/* auth.isAdmin ? <DashboardLayout/> : <Navigate to="/"/> */}
-            <Route path="/" element={<DashboardLayout/>} />,
+            <Route path="/" element={<DashboardView/>} />,
             <Route path="/events" element={<CustomerListView/>}/>
             <Route path="/events/create" element={<CreateEvent/>}/>
             <Route path="/events/:id" element={<UpdateEvent/>}/>
@@ -137,6 +136,8 @@ function App() {
             <Route path="/tickets" element={<TicketListView/>}/>
             <Route path="/tickets/create" element={<CreateTicket/>}/>,
             <Route path="/tickets/:id" element={<UpdateTicket/>}/>,
+            <Route path="/users" element={<UserListView/>}/>,
+            <Route path="/users/:id" element={<ChangeRole/>}/>
           </Route>
           <Route path="user" element={<MainLayout/>} >
             <Route path="/activate/:activation_token" element={ auth.isLogged ? <PageNotFound/> : <ActivationEmail/>} />,

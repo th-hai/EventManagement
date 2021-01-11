@@ -19,15 +19,15 @@ router.post('/reset', auth, userController.resetPassword);
 
 router.get('/profile', auth, userController.getUserInfor);
 
-router.get('/list', auth, role.checkRole(role.ROLES.Admin), userController.getUserAllInfor);
+router.get('/all', auth, role.checkRole(role.ROLES.Admin), userController.getUserAllInfor);
 
 router.get('/logout', userController.logOut);
 
-router.patch('/profile/update', auth, userController.updateUser);
+router.patch('/profile', auth, userController.updateUser);
 
-router.patch(':id', auth, role.checkRole(role.ROLES.Admin), userController.updateUserRole);
+router.patch('/:id', auth, role.checkRole(role.ROLES.Admin), userController.updateUserRole);
 
-router.delete(':id', auth, role.checkRole(role.ROLES.Admin), userController.deleteUser);
+router.delete('/:id', auth, role.checkRole(role.ROLES.Admin), userController.deleteUser);
 
 // Social login
 

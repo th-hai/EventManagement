@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import {
   Container,
   Grid,
   makeStyles
 } from '@material-ui/core';
-import Page from 'src/components/Page';
+import Page from '../../../components/Page';
 import Budget from './Budget';
 import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
@@ -26,6 +27,23 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const classes = useStyles();
 
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    RecallEvents()
+  }, [])
+
+  const RecallEvents = () =>
+  {
+    axios.get('/api/events/all')
+    .then(res => {
+      setEvents(res.data.events);
+    
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   return (
     <Page
       className={classes.root}
@@ -43,7 +61,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <Budget />
+            <Budget events={events} />
           </Grid>
           <Grid
             item
@@ -52,7 +70,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <TotalCustomers events={events} />
           </Grid>
           <Grid
             item
@@ -70,7 +88,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalProfit />
+            <TotalProfit events={events} />
           </Grid>
           <Grid
             item
@@ -90,7 +108,7 @@ const Dashboard = () => {
           >
             <TrafficByDevice />
           </Grid>
-          <Grid
+          {/* <Grid
             item
             lg={4}
             md={6}
@@ -107,7 +125,7 @@ const Dashboard = () => {
             xs={12}
           >
             <LatestOrders />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

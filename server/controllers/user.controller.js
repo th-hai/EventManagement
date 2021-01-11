@@ -249,8 +249,8 @@ const getUserInfor = async (req, res) => {
 
 const getUserAllInfor = async (req, res) => {
   try {
-    const user = await User.find().select('-password');
-    res.json(user);
+    const users = await User.find().select('-password');
+    res.json(users);
   } catch (error) {
     return res.status(500).json({
       msg: error.message

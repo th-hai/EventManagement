@@ -20,8 +20,7 @@ const UserSchema = new mongoose.Schema({
         min: 10
     },
     dateofBirth: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     phone: {
         type: String
