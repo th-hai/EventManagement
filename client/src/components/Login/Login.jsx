@@ -94,7 +94,7 @@ const Login = () => {
             {success && showSuccessMsg(success)}
       <div class="mb-4">
             <FacebookLogin
-              appId="1080174515760280"
+              appId="220240899580390"
               autoLoad={false}
               fields="name,email,picture"
               // onClick={componentClicked}

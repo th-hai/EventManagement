@@ -59,6 +59,7 @@ import SponsorListView from "./views/sponsor/SponsorListView";
 import CreateTicket from "./components/Ticket/CreateTicket";
 import UpdateTicket from "./components/Ticket/UpdateTicket";
 import CartDetail from "./components/Cart/CartDetail"
+import { faResearchgate } from "@fortawesome/free-brands-svg-icons";
 
 // import DashboardLayout from "./components/AdminLayout";
 function App() {
@@ -103,10 +104,11 @@ function App() {
             <Route path="home" element={<Navigate to="/"/>} />,
             <Route path="cart" element={<CartDetail/>} />,
             <Route path="profile" element={<Profile/>} />,
-            <Route path="/profile/reset" element={<ResetPassword/>} />,
+            {/* <Route path="/profile/reset" element={<ResetPassword/>} />, */}
             <Route path="login" element={ auth.isLogged ? <PageNotFound/>: <Login/>} />
             <Route path="register" element={ auth.isLogged ? <PageNotFound/> : <Register/>} />,
-            <Route path="user" element={<ActivationEmail/>} />,
+            <Route path="/users/activate/:activation_token" element={<ActivationEmail/>} />,
+            <Route path="/users/reset/:token" element={<ResetPassword/>} />,
             <Route path="/forget" element={<ForgotPassword/>} />,
             <Route path="/events" element={<EventPage/>} />,
             <Route path="/events/:id" element={<EventDetail/>} />,
