@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const validator = require('validator');
 const sendMail = require('../controllers/mail.controller');
 const fetch = require('node-fetch');
+require('dotenv/config');
 const {
   BASE_CLIENT_URL,
   MAILING_SERVICE_CLIENT_ID
@@ -190,7 +191,7 @@ const forgotPassword = async (req, res) => {
       email
     } = req.body
     const user = await User.findOne({
-      email
+      emailú
     })
     if (!user) return res.status(400).json({
       msg: "This email does not exist."
