@@ -142,8 +142,8 @@ const login = async (req, res) => {
     });
 
     res.cookie('refreshtoken', refresh_token, {
-      httpOnly: true,
-      path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token',
+      httpOnly: false,
+      path: '/api/users/refresh_token',
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -161,7 +161,7 @@ const getAccessToken = (req, res) => {
   try {
     const rf_token = req.cookies.refreshtoken;
     if (!rf_token) return res.status(400).json({
-      msg: "Please login now!"
+      msg: "No cookies available!"
     })
 
     jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
@@ -191,7 +191,7 @@ const forgotPassword = async (req, res) => {
       email
     } = req.body
     const user = await User.findOne({
-      emailú
+      email
     })
     if (!user) return res.status(400).json({
       msg: "This email does not exist."
@@ -262,7 +262,7 @@ const getUserAllInfor = async (req, res) => {
 const logOut = async (req, res) => {
   try {
     res.clearCookie('refreshtoken', {
-      path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token'
+      path: '/api/users/refresh_token'
     })
     return res.json({
       msg: "Logged out."
@@ -396,8 +396,8 @@ const googleLogin = async (req, res) => {
         id: user._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token',
+        httpOnly: false,
+        path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
@@ -418,8 +418,8 @@ const googleLogin = async (req, res) => {
         id: newUser._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token',
+        httpOnly: false,
+        path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
@@ -473,8 +473,8 @@ const facebookLogin = async (req, res) => {
         id: user._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token',
+        httpOnly: false,
+        path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
@@ -495,8 +495,8 @@ const facebookLogin = async (req, res) => {
         id: newUser._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: 'https://event-management-hcmute.herokuapp.com/api/users/refresh_token',
+        httpOnly: false,
+        path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
