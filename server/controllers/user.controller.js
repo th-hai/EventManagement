@@ -142,8 +142,9 @@ const login = async (req, res) => {
     });
 
     res.cookie('refreshtoken', refresh_token, {
-      httpOnly: false,
       path: '/api/users/refresh_token',
+      httpOnly: true,
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -396,8 +397,9 @@ const googleLogin = async (req, res) => {
         id: user._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: false,
         path: '/api/users/refresh_token',
+        httpOnly: true,
+        secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
@@ -418,8 +420,9 @@ const googleLogin = async (req, res) => {
         id: newUser._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: false,
         path: '/api/users/refresh_token',
+        httpOnly: true,
+        secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
 
@@ -473,7 +476,8 @@ const facebookLogin = async (req, res) => {
         id: user._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: false,
+        httpOnly: true,
+        secure: true,
         path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
@@ -495,7 +499,8 @@ const facebookLogin = async (req, res) => {
         id: newUser._id
       })
       res.cookie('refreshtoken', refresh_token, {
-        httpOnly: false,
+        httpOnly: true,
+        secure: true,
         path: '/api/users/refresh_token',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       })
