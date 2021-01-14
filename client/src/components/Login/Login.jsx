@@ -29,7 +29,7 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/login', {email, password})
+            const res = await axios.post('https://event-management-hcmute.herokuapp.com/api/users/login', {email, password}, {withCredentials: true})
             setUser({...user, err: '', success: res.data.msg})
             localStorage.setItem('firstLogin', true)
 
